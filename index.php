@@ -2,69 +2,41 @@
 session_start();
 require_once "conexao.php";
 
-$sql = "SELECT id, nome, preco, imagem FROM produtos";
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['redirect_after_login'] = 'index.php';
+    header("Location: login.php");
+    exit();
+}
+
+$usuario_id = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM produtos";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beleza Web</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <style>
-        .img-hover {
-            width: 1450px;
-            height: 450px;
-            transition: 0.3s;
-        }
-
-        .img-hover:hover {
-            content: url("img/imagem_inicial2.jpg");
-        }
-
-        body {
-            background-color: #e2cfe2;
-        }
-
-        h1 {
-            color: #BA55D3;
-            border: 3px solid #DDA0DD;
-            background-color: #DDA0DD;
-        }
-
-        a {
-            text-decoration: none;
-            color: #BA55D3;
-        }
-
-        a:hover {
-            color: black;
-        }
-
-        header th {
-            padding: 0 20px;
-            font-weight: normal;
-        }
-
-        .espaço {
-            padding: 0 35px;
-        }
-
-        .produto {
-            display: inline-block;
-            margin: 15px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background: #fff;
-        }
+        body { background-color: #e2cfe2; font-family: Arial, sans-serif; }
+        h1 { color: #BA55D3; border: 3px solid #DDA0DD; background-color: #DDA0DD; text-align:center; padding:10px; }
+        header th { padding: 0 20px; font-weight: normal; }
+        a { text-decoration: none; color: #BA55D3; }
+        a:hover { color: black; }
+        .produtos-container { display:flex; flex-wrap:wrap; justify-content:center; }
+        .produto { display:inline-block; margin:15px; border:1px solid #ccc; padding:10px; background:#fff; width:220px; text-align:center; }
+        .produto img { width:200px; }
+        .produto button { border:2px solid #FF00FF; background:white; padding:10px; width:100%; margin-top:5px; cursor:pointer; }
+        .imagem-destaque { width:100%; max-width:1000px; margin:20px 0; display:block; }
     </style>
 </head>
-
 <body>
     <br>
+    <h1>Beleza Web</h1>
     <center>
-        <h1>Beleza Web</h1>
         <header>
             <table>
                 <tr>
@@ -72,15 +44,18 @@ $result = $conn->query($sql);
                     <th><a href="maquiagem.php">Maquiagens</a></th>
                     <th><a href="perfumaria.php">Perfumaria</a></th>
                     <th><a href="skincare.php">Skincare</a></th>
+                    <th>
+                        <a href="carrinho.php">
+                            <img src="img/sacola-removebg-preview.png" width="45px">
+                        </a>
+                    </th>
                 </tr>
             </table>
         </header>
+<br>
+        <img src="img/imagem_inicial.jpg" class="imagem-destaque">
+        <img src="img/imagem_inicial3.jpg" class="imagem-destaque">
 
-        <br><br>
-        <img src="img/imagem_inicial.jpg" class="img-hover">
-        <br><br><br>
-        <img src="img/imagem_inicial3.jpg" width="1000px">
-        <br><br>
 
         <table class="espaço">
             <tr>
@@ -94,13 +69,6 @@ $result = $conn->query($sql);
                 <th><img src="img/produto3_inicial.jpg" width="250px"></th>
             </tr>
         </table>
-
     </center>
-
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="logout.php" class="btn btn-danger">Sair</a>
-    <?php else: ?>
-        <a href="login.php" class="btn btn-primary">Login</a>
-    <?php endif; ?>
 </body>
 </html>

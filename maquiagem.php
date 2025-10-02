@@ -1,6 +1,12 @@
+<?php 
+include "conexao.php";
+
+$sql = "SELECT * FROM produtos WHERE categoria = 'maquiagem'";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +14,43 @@
     <style>
         body {
             background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
         }
- 
+
         .imagem-com-borda {
             border: 5px solid #FFFAFA;
             background-color: #FFFAFA;
             padding: 15px;
-            width: 250px;
-            display: inline-block;
+            width: 220px;
+            display: block;
+            margin: 0 auto;
         }
- 
+
         p {
             background-color: #FFFAFA;
             margin-top: 0;
+            padding: 5px;
         }
- 
-        h4 {
+
+        h2 {
+            
+            text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         button {
-            border: 2px solid #FF00FF;
+            border: none;
             background-color: white;
-            width: 290px;
+            width: 200px;
             padding: 10px;
+            cursor: pointer;
+            color: #FF00FF;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #FF00FF;
+            color: white;
         }
 
         a {
@@ -41,139 +61,86 @@
         a:hover {
             color: black;
         }
+
+        .quantidade {
+            border: 2px solid #FF00FF;
+            background-color: white;
+            width: 220px;
+            padding: 10px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .produtos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .produto {
+            width: 250px;
+            background-color: #fffafa;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .top-bar img {
+            width: 45px;
+            
+        }
+        .cabelo{
+            
+            
+           
+            text-align:center; 
+            padding:10px; 
+            margin: 0 auto;
+        }
     </style>
 </head>
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+<div class="top-bar">
     <a href="index.php">
-        <img src="img/seta-removebg-preview.png" width="45px">
+        <img src="img/seta-removebg-preview.png" alt="Voltar">
     </a>
-
+    <br>
+    <br>
+    <h2 class="cabelo">Maquiagens</h2>
     <a href="carrinho.php">
-        <img src="img/sacola-removebg-preview.png" width="45px">
+        <img src="img/sacola-removebg-preview.png" alt="Carrinho">
     </a>
 </div>
-<h2>Maquiagens:</h2>
-<h4>Base</h4>
- 
-<body>
-    <table>
-        <tr>
-            <td><img src="img/base1-removebg-preview.png" width="100px" class="imagem-com-borda">
-                <center>
-                    <p>Base dior face & body foundation <br>R$339,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/base2-removebg-preview.png" width="250px" class="imagem-com-borda">
-                <center>
-                    <p>Lancôme Teint Idôle Ultra Wear 105W<br>R$338,90</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/base3-removebg-preview.png" width="210px" class="imagem-com-borda">
-                <center>
-                    <p>Base ysl touche eclat le teint <br>R$439,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
- 
-    </table>
-    <h4>Corretivo</h4>
-    <table>
-        <tr>
-            <td><img src="img/corretivo1-removebg-preview.png" width="150px" class="imagem-com-borda">
-                <center>
-                    <p>Corretivo dior backstage<br>R$239,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/corretivo2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Corretivo ysl touche eclat high cover <br>R$299,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/corretivo3-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Corretivo lancôme teint idôle ultra <br> wear care<br>R$271,15</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
-    </table>
- 
-     <h4>Pó Compacto</h4>
-    <table>
-        <tr>
-            <td><img src="img/po1-removebg-preview (1).png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Pó Compacto dior forever nude powder<br>R$459,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/po2-removebg-preview (1).png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Pó Compacto lancôme skin perfecting setting<br>R$299,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/po3-removebg-preview (1).png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Pó Compacto ysl all hours hyper luminize<br>R$489,15</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
-    </table>
- 
-         <h4>Batom</h4>
-    <table>
-        <tr>
-            <td><img src="img/batomdior4-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Lip balm dior addict lip glow<br>R$275,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/batomdior3-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Batom Dior Addict<br>R$309,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/batomdior2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Batom Dior Rouge Dior Velvet<br>R$319,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
-    </table>
- 
-        <h4>Rimel</h4>
-    <table>
-        <tr>
-            <td><img src="img/rimeldior-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Mascara para Cilius Diorshow Iconic <br> Overcurl Waterproof<br>R$269,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/rimeldior2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Máscara para Cílios Dior Addict <br> It-Lash 092 It-Black  <br>R$209,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/rimellancome2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Máscara para Cílios Lancôme Hypnôse <br> Drama 01 Excessive Black <br>R$236,90</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
-    </table>
+
+<div class="produtos-container">
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="produto">';
+            echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
+            echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
+            echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
+            echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
+            echo '<label>Quantidade:</label><br>';
+            echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
+            echo '<button type="submit">Comprar</button>';
+            echo '</form>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum produto disponível no momento.</p>";
+    }
+    ?>
+</div>
 </body>
- 
+
 </html>

@@ -1,3 +1,9 @@
+<?php 
+include "conexao.php";
+
+$sql = "SELECT * FROM produtos WHERE categoria = 'cabelos'";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,30 +14,43 @@
     <style>
         body {
             background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
         }
 
         .imagem-com-borda {
             border: 5px solid #FFFAFA;
             background-color: #FFFAFA;
             padding: 15px;
-            width: 250px;
-            display: inline-block;
+            width: 220px;
+            display: block;
+            margin: 0 auto;
         }
 
         p {
             background-color: #FFFAFA;
             margin-top: 0;
+            padding: 5px;
         }
 
-        h4 {
+        h2 {
+            
+            text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
 
         button {
-            border: 2px solid #FF00FF;
+            border: none;
             background-color: white;
-            width: 290px;
+            width: 200px;
             padding: 10px;
+            cursor: pointer;
+            color: #FF00FF;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #FF00FF;
+            color: white;
         }
 
         a {
@@ -42,104 +61,89 @@
         a:hover {
             color: black;
         }
+
+        .quantidade {
+            border: 2px solid #FF00FF;
+            background-color: white;
+            width: 220px;
+            padding: 10px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .produtos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .produto {
+            width: 250px;
+            background-color: #fffafa;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .top-bar img {
+            width: 45px;
+            
+        }
+        .cabelo{
+            
+            
+           
+            text-align:center; 
+            padding:10px; 
+            margin: 0 auto;
+        }
     </style>
 </head>
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-    <a href="index.php">
-        <img src="img/seta-removebg-preview.png" width="45px">
-    </a>
-
-    <a href="carrinho.php">
-        <img src="img/sacola-removebg-preview.png" width="45px">
-    </a>
-</div>
-<h2>Produtos para Cabelos:</h2>
-<h4>Wella</h4>
 
 <body>
-    <table>
-        <tr>
-            <td><img src="img/wella1.sem_fundo.jpg" width="220px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Completo Ultimate Repair Com <br>Miracle Hair Rescue 1l <br>R$710,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/wella2.jpg" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Wella Invigo Color Brilliance <br> Shampoo 1L + Máscara 500g <br>R$503,22</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/wella3.jpg" width="210px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Shampoo, Condicionador e Máscara<br> Reflections -Wella ÚNICO <br>R$250,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/wella4.sem_fundo.jpg" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Wella Professionals Fusion<br> Salon Trio (3 Produtos) <br>R$751,20</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/oleowella1-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Wella Professionals Oil Reflections <br>Óleo Capilar 100ml <br>R$150,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/oleowella2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Wella Professionals Ultimate <br>Luxe Oil Óleo<br>R$100,00</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
 
-    </table>
-    <h4>Braé</h4>
-    <table>
-        <tr>
-            <td><img src="img/brae1-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Divine Trio <br>R$203,34</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/brae2-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Brae Para Nutrição <br>R$133,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/brae3-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Braé Stages Hidration <br>R$137,34</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/brae4-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Kit Braé Blond Repair <br>R$200,50</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/oleo1brae-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Óleo Capilar Divine 60ml<br>R$71,40</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-            <td><img src="img/braeoleo2-removebg-preview.png" width="100px" class="imagem-com-borda">
-                <center>
-                    <p>Óleo Capilar Revival 60ml <br>R$75,20</p>
-                </center>
-                <button class="btn btn-primary btn-block"><a href="carrinho.php">Comprar</a></button>
-            </td>
-        </tr>
-    </table>
+<div class="top-bar">
+    <a href="index.php">
+        <img src="img/seta-removebg-preview.png" alt="Voltar">
+    </a>
+    <br>
+    <br>
+    <h2 class="cabelo">Produtos para Cabelos</h2>
+    <a href="carrinho.php">
+        <img src="img/sacola-removebg-preview.png" alt="Carrinho">
+    </a>
+</div>
+
+<div class="produtos-container">
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="produto">';
+            echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
+            echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
+            echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
+            echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
+            echo '<label>Quantidade:</label><br>';
+            echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
+            echo '<button type="submit">Comprar</button>';
+            echo '</form>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum produto disponível no momento.</p>";
+    }
+    ?>
+</div>
 
 </body>
-
 </html>

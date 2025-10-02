@@ -2,6 +2,11 @@
 session_start();
 require_once "conexao.php";
 
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? null;
     $senha = $_POST['senha'] ?? null;
@@ -47,13 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login - Beleza Web</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
 </head>
-
 <body>
     <div class="container">
         <div class="row justify-content-center">
@@ -66,13 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php unset($_SESSION['message'], $_SESSION['message_type']); endif; ?>
 
                 <div class="card card-body">
-                    <h3 class="text-center">Login</h3>
+                    <h3 class="text-center mb-3">Login</h3>
                     <form method="POST">
                         <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
                         <input type="password" name="senha" class="form-control mb-2" placeholder="Senha" required>
                         <button class="btn btn-primary btn-block">Entrar</button>
                     </form>
-                    <div class="text-center mt-2">
+                    <div class="text-center mt-3">
                         <a href="cadastro.php">Não possui conta? Cadastre-se</a>
                     </div>
                 </div>
@@ -80,5 +83,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-
 </html>

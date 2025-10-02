@@ -18,14 +18,21 @@
             display: inline-block;
         }
 
-       p { background-color: #FFFAFA; margin-top: 0;}
-       button { border: white; background-color: white; width: 200px; padding: 10px;}
+        p {
+            background-color: #FFFAFA;
+            margin-top: 0;
+        }
+
+        button {
+            border: white;
+            background-color: white;
+            width: 200px;
+            padding: 10px;
+        }
 
         h4 {
             font-family: Arial, Helvetica, sans-serif;
         }
-
-
 
         a {
             text-decoration: none;
@@ -53,14 +60,41 @@
         <img src="img/sacola-removebg-preview.png" width="45px">
     </a>
 </div>
-<h2>Perfumaria:</h2>
-<h4>Feminino</h4>
+<h2>Skincare</h2>
+<h4>Ácidos e Sérum:</h4>
+
 <body>
     <table>
         <tr>
-            <td><img src="img/lancome__1_-removebg-preview.png" width="220px" class="imagem-com-borda">
+            <td><img src="img/creamyazul-removebg-preview.png" width="220px" class="imagem-com-borda">
                 <center>
-                    <p>Perfume lancôme idôle feminino <br> eau de toilette 25ml<br>R$341,00</p>
+                    <p>Creme Ácido Glicólico <br> Creamy - 30g <br>R$84,90</p>
+                </center>
+                <form action="adicionar_carrinho.php" method="post" class="quantidade">
+                    <input type="hidden" name="produto_id" value="1">
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade" value="1" min="1">
+
+                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                </form>
+
+            </td>
+            <td><img src="img/creamylaranja-removebg-preview.png" width="200px" class="imagem-com-borda">
+                <center>
+                    <p>Creamy Sérum Facial 30ml <br> Vitamina C<br>R$105,00</p>
+                </center>
+                <form action="adicionar_carrinho.php" method="post" class="quantidade">
+                    <input type="hidden" name="produto_id" value="1">
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade" value="1" min="1">
+
+                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                </form>
+
+            </td>
+            <td><img src="img/creamyrosa-removebg-preview.png" width="210px" class="imagem-com-borda">
+                <center>
+                    <p>Ácido Mandélico <br>Gel Creamy 30g <br>R$84,20</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -72,9 +106,9 @@
 
 
             </td>
-            <td><img src="img/saint laurent (1).png" width="200px" class="imagem-com-borda">
+            <td><img src="img/creamyroxo-removebg-preview.png" width="200px" class="imagem-com-borda">
                 <center>
-                    <p>Yves saint Laurent <br>30 ml <br>431,00</p>
+                    <p>Retinol: com ativos hidratantes <br>calmantes e antioxidantes <br>R$105,20</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -85,55 +119,16 @@
                 </form>
 
 
-            </td>
-            <td><img src="img/missdior3 (1) (1).png" width="210px" class="imagem-com-borda">
-                <center>
-                    <p>Dior Miss Eau <br>De Parfum 50ml <br>R$750,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/lavie-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>La Vie Est Belle Feminino <br>Eau De Parfum 30ml <br>R$500,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-            </td>
-            <td><img src="img/212.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>212 Vip Rosé Eau <br>De Parfum 125ml<br>R$650,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
         </tr>
 
     </table>
-    <h4>Masculino</h4>
+    <h4>Creamy em geral:</h4>
     <table>
         <tr>
-            <td><img src="img/seuvage2-removebg-preview.png" width="250px" class="imagem-com-borda">
+            <td><img src="img/bodycream-removebg-preview.png" width="200px" class="imagem-com-borda">
                 <center>
-                    <p>Dior Sauvage Eau De Parfum <br>Masculino 60 Ml <br>R$839,90</p>
+
+                    <p>Creme Hidratante Facial Creamy <br>R$50,26</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -145,9 +140,9 @@
 
 
             </td>
-            <td><img src="img/invictus-removebg-preview.png" width="200px" class="imagem-com-borda">
+            <td><img src="img/gel-removebg-preview.png" width="200px" class="imagem-com-borda">
                 <center>
-                    <p>Perfume Invictus Paco <br>Rabanne Masculino<br>R$539,91</p>
+                    <p>Creamy Gel De Limpeza 200ml<br>R$63,15</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -157,11 +152,10 @@
                     <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                 </form>
 
-
             </td>
-            <td><img src="img/212masc-removebg-preview.png" width="100px" class="imagem-com-borda">
+            <td><img src="img/hidratante-removebg-preview.png" width="200px" class="imagem-com-borda">
                 <center>
-                    <p>Perfume 212 Vip Black <br>Masculino 200ml <br>R$939,90</p>
+                    <p>Loção Hidratante Corporal <br>R$63,15</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -171,11 +165,10 @@
                     <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                 </form>
 
-
             </td>
-            <td><img src="img/1million-removebg-preview.png" width="200px" class="imagem-com-borda">
+            <td><img src="img/lip-removebg-preview.png" width="200px" class="imagem-com-borda">
                 <center>
-                    <p>1 Million Eau De Toilette Paco <br>Rabanne Masculino 100ml<br>R$550,00</p>
+                    <p>Lip Balm Incolor<br>R$40,00</p>
                 </center>
                 <form action="adicionar_carrinho.php" method="post" class="quantidade">
                     <input type="hidden" name="produto_id" value="1">
@@ -183,24 +176,9 @@
                     <input type="number" name="quantidade" value="1" min="1">
 
                     <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
+                </form
 
-
-            </td>
-            <td><img src="img/asad-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Asad Lattafa <br>Perfume Masculino <br>R$499,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
+                    </td>
         </tr>
     </table>
 
