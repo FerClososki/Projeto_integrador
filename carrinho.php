@@ -1,19 +1,28 @@
 <?php
 session_start();
-include 'conexao.php';
+require_once "conexao.php";
 
-// Definir usuário logado (exemplo: se tiver login implementado)
-$usuario_id = $_SESSION['usuario_id'] ?? null;
+// Redireciona se não estiver logado
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['redirect_after_login'] = 'carrinho.php';
+    header("Location: login.php");
+    exit();
+}
 
-// Inicializa total
-$total = 0;
+$usuario_id = $_SESSION['user_id'];
 
-// Busca itens do carrinho
-$sql = "SELECT c.id AS carrinho_id, c.quantidade, p.nome, p.preco 
+// Buscar todos os itens do carrinho do usuário
+$sql = "SELECT c.id AS carrinho_id, c.quantidade, 
+               p.nome, p.preco, p.imagem
         FROM carrinho c
-        JOIN produtos p ON c.produto_id = p.id";
-$result = $conn->query($sql);
+        JOIN produtos p ON c.produto_id = p.id
+        WHERE c.usuario_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,78 +30,59 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <title>Meu Carrinho</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #e2cfe2;
-            font-family: Arial, sans-serif;
-        }
-
-        h2 {
-            color: #BA55D3;
-            border: 3px solid #DDA0DD;
-            background-color: #DDA0DD;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .vazio {
-            color: #BA55D3;
-            border: 2px solid #DDA0DD;
-            background-color: #ffdaffff;
-            text-align: center;
-            padding: 7px;
-        }
-
-        .finalizar {
-            color: #BA55D3;
-            border: 3px solid #ffdaffff;
-            background-color: #ffdaffff;
-            padding: 8px;
-        }
-    </style>
 </head>
 
-<body>
-    <div class="container mt-5">
-        <h2>Meu Carrinho</h2>
+<body class="container mt-5">
+    <h2>Meu Carrinho</h2>
+    <hr>
 
-        <?php if ($result && $result->num_rows > 0): ?>
-            <?php while ($row = $result->fetch_assoc()):
-                $subtotal = $row['preco'] * $row['quantidade'];
-                $total += $subtotal;
-            ?>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <h5><?= htmlspecialchars($row['nome']) ?></h5>
-                        <small>R$ <?= number_format($row['preco'], 2, ',', '.') ?> x <?= $row['quantidade'] ?></small><br>
-                        <strong>Subtotal: R$ <?= number_format($subtotal, 2, ',', '.') ?></strong>
-                    </div>
-                    <div>
-                        <a href="edit_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="delete_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-sm btn-danger">Excluir</a>
-                    </div>
-                </div>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <div class="vazio">Seu carrinho está vazio.</div>
-        <?php endif; ?>
+    <?php if ($result->num_rows > 0): ?>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Produto</th>
+                    <th>Imagem</th>
+                    <th>Preço Unitário</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $total = 0;
+                while ($row = $result->fetch_assoc()):
+                    $subtotal = $row['preco'] * $row['quantidade'];
+                    $total += $subtotal;
+                ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['nome']) ?></td>
+                        <td><img src="<?= $row['imagem'] ?>" width="80"></td>
+                        <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
+                        <td><?= $row['quantidade'] ?></td>
+                        <td>R$ <?= number_format($subtotal, 2, ',', '.') ?></td>
+                        <td>
+                            <a href="edit_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="remover_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja remover este item?')">Remover</a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
 
-        <div class="card mt-4">
-            <div class="card-body text-right">
-                <?php if ($usuario_id): ?>
-                    <a href="finalizar_pedido.php" class="finalizar">Finalizar Compra</a>
-                <?php else: ?>
-                    <a href="login.php" class="finalizar">Fazer login para finalizar</a>
-                <?php endif; ?>
-                <br><br>
-                <p>Total: <span class="text-success">R$ <?= number_format($total, 2, ',', '.') ?></span></p>
-            </div>
+        <h4 class="text-right">Total: <strong>R$ <?= number_format($total, 2, ',', '.') ?></strong></h4>
+        <div class="text-right mt-3">
+            <a href="index.php" class="btn btn-secondary">Continuar Comprando</a>
+            <a href="finalizar_compra.php" class="btn btn-success">Finalizar Compra</a>
         </div>
 
-        <div class="mt-3 text-center">
-            <a href="index.php" class="finalizar">Continuar comprando</a>
+    <?php else: ?>
+        <div class="alert alert-info">
+            Seu carrinho está vazio.
         </div>
-    </div>
+        <a href="index.php" class="btn btn-primary">Ir às compras</a>
+    <?php endif; ?>
+
 </body>
 
 </html>

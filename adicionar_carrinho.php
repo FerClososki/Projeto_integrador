@@ -1,15 +1,6 @@
 <?php
 session_start();
 include 'conexao.php';
-
-if (!isset($_SESSION['usuario_id'])) {
-    die("Erro: usuário não logado.");
-}
-if ($quantidade < 1) {
-    $quantidade = 1;
-}
-
-
 $usuario_id = $_SESSION['usuario_id'];
 
 if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
@@ -20,6 +11,7 @@ if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
         $quantidade = 1;
     }
 
+    // Checar se o produto já está no carrinho do usuário
     $sql_check = "SELECT * FROM carrinho WHERE produto_id = ? AND usuario_id = ?";
     $stmt = $conn->prepare($sql_check);
     $stmt->bind_param("ii", $produto_id, $usuario_id);
@@ -27,6 +19,7 @@ if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        // Atualiza a quantidade
         $row = $result->fetch_assoc();
         $nova_quantidade = $row['quantidade'] + $quantidade;
 
@@ -34,6 +27,7 @@ if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
         $stmt->bind_param("iii", $nova_quantidade, $produto_id, $usuario_id);
         $stmt->execute();
     } else {
+        // Insere novo item no carrinho
         $stmt = $conn->prepare("INSERT INTO carrinho (usuario_id, produto_id, quantidade) VALUES (?, ?, ?)");
         $stmt->bind_param("iii", $usuario_id, $produto_id, $quantidade);
         $stmt->execute();

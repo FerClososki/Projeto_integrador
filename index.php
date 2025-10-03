@@ -2,16 +2,6 @@
 session_start();
 require_once "conexao.php";
 
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['redirect_after_login'] = 'index.php';
-    header("Location: login.php");
-    exit();
-}
-
-$usuario_id = $_SESSION['user_id'];
-
-$sql = "SELECT * FROM produtos";
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,6 +25,7 @@ $result = $conn->query($sql);
 </head>
 <body>
     <br>
+    <br>
     <h1>Beleza Web</h1>
     <center>
         <header>
@@ -52,7 +43,6 @@ $result = $conn->query($sql);
                 </tr>
             </table>
         </header>
-<br>
         <img src="img/imagem_inicial.jpg" class="imagem-destaque">
         <img src="img/imagem_inicial3.jpg" class="imagem-destaque">
 

@@ -1,31 +1,57 @@
+<?php 
+include "conexao.php";
+
+$sql = "SELECT * FROM produtos WHERE categoria = 'perfumaria'";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabelos</title>
+    <title>Perfumes</title>
     <style>
         body {
             background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
         }
 
         .imagem-com-borda {
             border: 5px solid #FFFAFA;
             background-color: #FFFAFA;
             padding: 15px;
-            width: 275px;
-            display: inline-block;
+            width: 220px;
+            display: block;
+            margin: 0 auto;
         }
 
-       p { background-color: #FFFAFA; margin-top: 0;}
-       button { border: white; background-color: white; width: 200px; padding: 10px;}
+        p {
+            background-color: #FFFAFA;
+            margin-top: 0;
+            padding: 5px;
+        }
 
-        h4 {
+        h2 {
+            
+            text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        button {
+            border: none;
+            background-color: white;
+            width: 200px;
+            padding: 10px;
+            cursor: pointer;
+            color: #FF00FF;
+            font-weight: bold;
+        }
 
+        button:hover {
+            background-color: #FF00FF;
+            color: white;
+        }
 
         a {
             text-decoration: none;
@@ -39,171 +65,82 @@
         .quantidade {
             border: 2px solid #FF00FF;
             background-color: white;
-            width: 290px;
+            width: 220px;
             padding: 10px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .produtos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .produto {
+            width: 250px;
+            background-color: #fffafa;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .top-bar img {
+            width: 45px;
+            
+        }
+        .perfume{
+            
+            
+           
+            text-align:center; 
+            padding:10px; 
+            margin: 0 auto;
         }
     </style>
 </head>
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+<div class="top-bar">
     <a href="index.php">
-        <img src="img/seta-removebg-preview.png" width="45px">
+        <img src="img/seta-removebg-preview.png" alt="Voltar">
     </a>
-
+    <br>
+    <br>
+    <h2 class="perfume">Perfumes</h2>
     <a href="carrinho.php">
-        <img src="img/sacola-removebg-preview.png" width="45px">
+        <img src="img/sacola-removebg-preview.png" alt="Carrinho">
     </a>
 </div>
-<h2>Perfumaria:</h2>
-<h4>Feminino</h4>
-<body>
-    <table>
-        <tr>
-            <td><img src="img/lancome__1_-removebg-preview.png" width="220px" class="imagem-com-borda">
-                <center>
-                    <p>Perfume lancôme idôle feminino <br> eau de toilette 25ml<br>R$341,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
 
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/saint laurent (1).png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Yves saint Laurent <br>30 ml <br>431,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/missdior3 (1) (1).png" width="210px" class="imagem-com-borda">
-                <center>
-                    <p>Dior Miss Eau <br>De Parfum 50ml <br>R$750,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/lavie-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>La Vie Est Belle Feminino <br>Eau De Parfum 30ml <br>R$500,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-            </td>
-            <td><img src="img/212.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>212 Vip Rosé Eau <br>De Parfum 125ml<br>R$650,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
-        </tr>
-
-    </table>
-    <h4>Masculino</h4>
-    <table>
-        <tr>
-            <td><img src="img/seuvage2-removebg-preview.png" width="250px" class="imagem-com-borda">
-                <center>
-                    <p>Dior Sauvage Eau De Parfum <br>Masculino 60 Ml <br>R$839,90</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/invictus-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Perfume Invictus Paco <br>Rabanne Masculino<br>R$539,91</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/212masc-removebg-preview.png" width="100px" class="imagem-com-borda">
-                <center>
-                    <p>Perfume 212 Vip Black <br>Masculino 200ml <br>R$939,90</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/1million-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>1 Million Eau De Toilette Paco <br>Rabanne Masculino 100ml<br>R$550,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/asad-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Asad Lattafa <br>Perfume Masculino <br>R$499,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-        </tr>
-    </table>
-
+<div class="produtos-container">
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="produto">';
+            echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
+            echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
+            echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
+            echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
+            echo '<label>Quantidade:</label><br>';
+            echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
+            echo '<button type="submit">Comprar</button>';
+            echo '</form>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum produto disponível no momento.</p>";
+    }
+    ?>
+</div>
 </body>
 
 </html>

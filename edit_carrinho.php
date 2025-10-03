@@ -2,76 +2,132 @@
 session_start();
 require_once "conexao.php";
 
+// Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
+    $_SESSION['redirect_after_login'] = 'carrinho.php';
     header("Location: login.php");
     exit();
 }
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : null;
+// Processa o POST (salvar edição)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $carrinho_id = $_POST['carrinho_id'];
+    $quantidade = $_POST['quantidade'];
 
-if (!$id) {
-    $_SESSION['message'] = "ID do item não fornecido.";
-    $_SESSION['message_type'] = "danger";
+    if ($carrinho_id && $quantidade > 0) {
+        $stmt = $conn->prepare("UPDATE carrinho SET quantidade = ? WHERE id = ?");
+        $stmt->bind_param("ii", $quantidade, $carrinho_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    // Redireciona de volta para o carrinho
     header("Location: carrinho.php");
     exit();
 }
 
-try {
-    $sql = "SELECT c.id, c.quantidade, p.nome 
-            FROM carrinho c 
-            JOIN produtos p ON c.produto_id = p.id 
-            WHERE c.id = ? AND c.usuario_id = ?";
-    $stmt = $conn->prepare($sql);
+// Carrega os dados do item para edição
+$carrinho_id = $_GET['id'] ?? null;
+$item = null;
 
-    if ($stmt) {
-        $stmt->bind_param("ii", $id, $_SESSION['user_id']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows == 1) {
-            $item = $result->fetch_assoc();
-        } else {
-            $_SESSION['message'] = "Item não encontrado.";
-            $_SESSION['message_type'] = "warning";
-            header("Location: carrinho.php");
-            exit();
-        }
-        $stmt->close();
-    }
-} catch (Exception $e) {
-    echo "Erro: " . $e->getMessage();
-    exit();
+if ($carrinho_id) {
+    $stmt = $conn->prepare("SELECT c.id, c.quantidade, p.nome FROM carrinho c JOIN produtos p ON c.produto_id = p.id WHERE c.id = ?");
+    $stmt->bind_param("i", $carrinho_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $item = $result->fetch_assoc();
+    $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Item do Carrinho</title>
+    <title>Editar Carrinho</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #BA55D3;
+            border: 3px solid #DDA0DD;
+            background-color: #DDA0DD;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            background-color: #FFFAFA;
+            border: 2px solid #DDA0DD;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            color: #BA55D3;
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background-color: #DDA0DD;
+            color: #4B0082;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #BA55D3;
+            color: white;
+        }
+
+        .btn-cancelar {
+            background-color: white;
+            border: 1px solid #BA55D3;
+            color: #BA55D3;
+        }
+
+        .btn-cancelar:hover {
+            background-color: #BA55D3;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div class="container p-4">
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card card-body">
-                    <h4>Editar quantidade de: <?= $item['nome'] ?></h4>
-                    <form action="update_carrinho.php" method="POST">
-                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
-                        <div class="form-group">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" name="quantidade" class="form-control" 
-                                   value="<?= $item['quantidade'] ?>" min="1" required>
-                        </div>
-                        <button class="btn btn-success btn-block" type="submit">Atualizar</button>
-                        <a href="carrinho.php" class="btn btn-secondary btn-block">Cancelar</a>
-                    </form>
+
+    <h2>Editar Quantidade do Produto</h2>
+
+    <?php if ($item): ?>
+        <div class="form-container">
+            <form method="post" action="edit_carrinho.php">
+                <input type="hidden" name="carrinho_id" value="<?= $item['id'] ?>">
+
+                <div class="form-group">
+                    <label>Produto:</label>
+                    <input type="text" class="form-control" value="<?= htmlspecialchars($item['nome']) ?>" disabled>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade" class="form-control" value="<?= $item['quantidade'] ?>" min="1" required>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-custom">Salvar</button>
+                    <a href="carrinho.php" class="btn btn-cancelar ml-2">Cancelar</a>
+                </div>
+            </form>
         </div>
-    </div>
+    <?php else: ?>
+        <div class="text-center">
+            <p>Item não encontrado.</p>
+            <a href="carrinho.php" class="btn btn-cancelar">Voltar ao Carrinho</a>
+        </div>
+    <?php endif; ?>
+
 </body>
 </html>
-

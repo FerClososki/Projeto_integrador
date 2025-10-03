@@ -1,37 +1,56 @@
+<?php 
+include "conexao.php";
+
+$sql = "SELECT * FROM produtos WHERE categoria = 'skyncare'";
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabelos</title>
+    <title>SkynCare</title>
     <style>
         body {
             background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
         }
 
         .imagem-com-borda {
             border: 5px solid #FFFAFA;
             background-color: #FFFAFA;
             padding: 15px;
-            width: 275px;
-            display: inline-block;
+            width: 220px;
+            display: block;
+            margin: 0 auto;
         }
 
         p {
             background-color: #FFFAFA;
             margin-top: 0;
+            padding: 5px;
+        }
+
+        h2 {
+            
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         button {
-            border: white;
+            border: none;
             background-color: white;
             width: 200px;
             padding: 10px;
+            cursor: pointer;
+            color: #FF00FF;
+            font-weight: bold;
         }
 
-        h4 {
-            font-family: Arial, Helvetica, sans-serif;
+        button:hover {
+            background-color: #FF00FF;
+            color: white;
         }
 
         a {
@@ -46,142 +65,82 @@
         .quantidade {
             border: 2px solid #FF00FF;
             background-color: white;
-            width: 290px;
+            width: 220px;
             padding: 10px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .produtos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .produto {
+            width: 250px;
+            background-color: #fffafa;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .top-bar img {
+            width: 45px;
+            
+        }
+        .skyncare{
+            
+            
+           
+            text-align:center; 
+            padding:10px; 
+            margin: 0 auto;
         }
     </style>
 </head>
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+<div class="top-bar">
     <a href="index.php">
-        <img src="img/seta-removebg-preview.png" width="45px">
+        <img src="img/seta-removebg-preview.png" alt="Voltar">
     </a>
-
+    <br>
+    <br>
+    <h2 class="skyncare">SkinCare</h2>
     <a href="carrinho.php">
-        <img src="img/sacola-removebg-preview.png" width="45px">
+        <img src="img/sacola-removebg-preview.png" alt="Carrinho">
     </a>
 </div>
-<h2>Skincare</h2>
-<h4>Ácidos e Sérum:</h4>
 
-<body>
-    <table>
-        <tr>
-            <td><img src="img/creamyazul-removebg-preview.png" width="220px" class="imagem-com-borda">
-                <center>
-                    <p>Creme Ácido Glicólico <br> Creamy - 30g <br>R$84,90</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
-            <td><img src="img/creamylaranja-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Creamy Sérum Facial 30ml <br> Vitamina C<br>R$105,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
-            <td><img src="img/creamyrosa-removebg-preview.png" width="210px" class="imagem-com-borda">
-                <center>
-                    <p>Ácido Mandélico <br>Gel Creamy 30g <br>R$84,20</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/creamyroxo-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Retinol: com ativos hidratantes <br>calmantes e antioxidantes <br>R$105,20</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-        </tr>
-
-    </table>
-    <h4>Creamy em geral:</h4>
-    <table>
-        <tr>
-            <td><img src="img/bodycream-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-
-                    <p>Creme Hidratante Facial Creamy <br>R$50,26</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-
-            </td>
-            <td><img src="img/gel-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Creamy Gel De Limpeza 200ml<br>R$63,15</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
-            <td><img src="img/hidratante-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Loção Hidratante Corporal <br>R$63,15</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form>
-
-            </td>
-            <td><img src="img/lip-removebg-preview.png" width="200px" class="imagem-com-borda">
-                <center>
-                    <p>Lip Balm Incolor<br>R$40,00</p>
-                </center>
-                <form action="adicionar_carrinho.php" method="post" class="quantidade">
-                    <input type="hidden" name="produto_id" value="1">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" value="1" min="1">
-
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
-                </form
-
-                    </td>
-        </tr>
-    </table>
-
+<div class="produtos-container">
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="produto">';
+            echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
+            echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
+            echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
+            echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
+            echo '<label>Quantidade:</label><br>';
+            echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
+            echo '<button type="submit">Comprar</button>';
+            echo '</form>';
+            echo '</div>';
+        }
+    } else {
+        echo "<p>Nenhum produto disponível no momento.</p>";
+    }
+    ?>
+</div>
 </body>
 
 </html>
