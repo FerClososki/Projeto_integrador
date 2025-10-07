@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once "conexao.php";
+include 'conexao.php';
 
-// Redireciona se não estiver logado
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['redirect_after_login'] = 'carrinho.php';
     header("Location: login.php");
@@ -11,16 +10,21 @@ if (!isset($_SESSION['user_id'])) {
 
 $usuario_id = $_SESSION['user_id'];
 
-// Buscar todos os itens do carrinho do usuário
-$sql = "SELECT c.id AS carrinho_id, c.quantidade, 
-               p.nome, p.preco, p.imagem
-        FROM carrinho c
-        JOIN produtos p ON c.produto_id = p.id
-        WHERE c.usuario_id = ?";
-$stmt = $conn->prepare($sql);
+// Busca itens do carrinho
+$stmt = $conn->prepare("
+    SELECT c.id AS carrinho_id, c.quantidade, p.nome, p.preco, p.imagem
+    FROM carrinho c
+    JOIN produtos p ON c.produto_id = p.id
+    WHERE c.usuario_id = ?
+");
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
 $result = $stmt->get_result();
+
+$total = 0;
+while ($row = $result->fetch_assoc()) {
+    $total += $row['preco'] * $row['quantidade'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +34,38 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <title>Meu Carrinho</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+    <style>
+        .edite {
+            background-color: #DDA0DD;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        .tabela {
+            color: #BA55D3;
+            border: #BA55D3 solid 3px;
+        }
+
+        h2 {
+            color: #BA55D3;
+            border: 3px solid #DDA0DD;
+            background-color: #DDA0DD;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .excluir {
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+        }
+
+        .finalizar {
+            background-color: #BA55D3;
+            color: white;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 
 <body class="container mt-5">
@@ -38,7 +74,7 @@ $result = $stmt->get_result();
 
     <?php if ($result->num_rows > 0): ?>
         <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
+            <thead class="tabela">
                 <tr>
                     <th>Produto</th>
                     <th>Imagem</th>
@@ -50,10 +86,9 @@ $result = $stmt->get_result();
             </thead>
             <tbody>
                 <?php
-                $total = 0;
+                $result->data_seek(0); // volta ao início
                 while ($row = $result->fetch_assoc()):
                     $subtotal = $row['preco'] * $row['quantidade'];
-                    $total += $subtotal;
                 ?>
                     <tr>
                         <td><?= htmlspecialchars($row['nome']) ?></td>
@@ -62,8 +97,8 @@ $result = $stmt->get_result();
                         <td><?= $row['quantidade'] ?></td>
                         <td>R$ <?= number_format($subtotal, 2, ',', '.') ?></td>
                         <td>
-                            <a href="edit_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="remover_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja remover este item?')">Remover</a>
+                            <a href="edit_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="edite">Editar</a>
+                            <a href="delete_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="excluir">Excluir</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -72,17 +107,14 @@ $result = $stmt->get_result();
 
         <h4 class="text-right">Total: <strong>R$ <?= number_format($total, 2, ',', '.') ?></strong></h4>
         <div class="text-right mt-3">
-            <a href="index.php" class="btn btn-secondary">Continuar Comprando</a>
-            <a href="finalizar_compra.php" class="btn btn-success">Finalizar Compra</a>
+            <a href="index.php" class="edite">Continuar Comprando</a>
+            <a href="finalizar_compra.php" class="finalizar">Finalizar Compra</a>
         </div>
 
     <?php else: ?>
-        <div class="alert alert-info">
-            Seu carrinho está vazio.
-        </div>
+        <div class="alert alert-info">Seu carrinho está vazio.</div>
         <a href="index.php" class="btn btn-primary">Ir às compras</a>
     <?php endif; ?>
-
 </body>
 
 </html>

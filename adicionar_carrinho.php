@@ -1,40 +1,46 @@
 <?php
 session_start();
 include 'conexao.php';
-$usuario_id = $_SESSION['usuario_id'];
 
-if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
-    $produto_id = intval($_POST['produto_id']);
-    $quantidade = intval($_POST['quantidade']);
-
-    if ($quantidade < 1) {
-        $quantidade = 1;
+if (!isset($_SESSION['user_id'])) {
+    if (isset($_POST['produto_id'], $_POST['quantidade'])) {
+        $_SESSION['pending_produto_id'] = intval($_POST['produto_id']);
+        $_SESSION['pending_quantidade'] = intval($_POST['quantidade']);
     }
+    $_SESSION['redirect_after_login'] = 'adicionar_carrinho.php';
+    header("Location: login.php");
+    exit();
+}
 
-    // Checar se o produto já está no carrinho do usuário
-    $sql_check = "SELECT * FROM carrinho WHERE produto_id = ? AND usuario_id = ?";
-    $stmt = $conn->prepare($sql_check);
+$usuario_id = $_SESSION['user_id'];
+
+$produto_id = $_POST['produto_id'] ?? $_SESSION['pending_produto_id'] ?? null;
+$quantidade = $_POST['quantidade'] ?? $_SESSION['pending_quantidade'] ?? 1;
+
+unset($_SESSION['pending_produto_id'], $_SESSION['pending_quantidade']);
+
+if ($produto_id) {
+    $produto_id = intval($produto_id);
+    $quantidade = intval($quantidade);
+    if ($quantidade < 1) $quantidade = 1;
+
+    $stmt = $conn->prepare("SELECT quantidade FROM carrinho WHERE produto_id = ? AND usuario_id = ?");
     $stmt->bind_param("ii", $produto_id, $usuario_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Atualiza a quantidade
         $row = $result->fetch_assoc();
         $nova_quantidade = $row['quantidade'] + $quantidade;
-
         $stmt = $conn->prepare("UPDATE carrinho SET quantidade = ? WHERE produto_id = ? AND usuario_id = ?");
         $stmt->bind_param("iii", $nova_quantidade, $produto_id, $usuario_id);
         $stmt->execute();
     } else {
-        // Insere novo item no carrinho
         $stmt = $conn->prepare("INSERT INTO carrinho (usuario_id, produto_id, quantidade) VALUES (?, ?, ?)");
         $stmt->bind_param("iii", $usuario_id, $produto_id, $quantidade);
         $stmt->execute();
     }
-
-    header("Location: carrinho.php");
-    exit;
-} else {
-    echo "Erro: Produto ou quantidade não informados.";
 }
+
+header("Location: carrinho.php");
+exit();

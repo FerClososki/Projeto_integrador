@@ -2,14 +2,11 @@
 session_start();
 require_once "conexao.php";
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['redirect_after_login'] = 'carrinho.php';
     header("Location: login.php");
     exit();
 }
-
-// Processa o POST (salvar edição)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $carrinho_id = $_POST['carrinho_id'];
     $quantidade = $_POST['quantidade'];
@@ -21,12 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 
-    // Redireciona de volta para o carrinho
     header("Location: carrinho.php");
     exit();
 }
 
-// Carrega os dados do item para edição
 $carrinho_id = $_GET['id'] ?? null;
 $item = null;
 

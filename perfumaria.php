@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include "conexao.php";
 
 $sql = "SELECT * FROM produtos WHERE categoria = 'perfumaria'";
