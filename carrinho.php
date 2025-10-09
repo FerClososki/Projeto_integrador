@@ -2,15 +2,15 @@
 session_start();
 include 'conexao.php';
 
+// Se não estiver logado, redireciona para login
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['redirect_after_login'] = 'carrinho.php';
     header("Location: login.php");
     exit();
 }
 
 $usuario_id = $_SESSION['user_id'];
 
-// Busca itens do carrinho
+// Busca apenas os produtos do usuário logado
 $stmt = $conn->prepare("
     SELECT c.id AS carrinho_id, c.quantidade, p.nome, p.preco, p.imagem
     FROM carrinho c
@@ -21,9 +21,13 @@ $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Calcula total
 $total = 0;
+$carrinho = [];
 while ($row = $result->fetch_assoc()) {
-    $total += $row['preco'] * $row['quantidade'];
+    $row['subtotal'] = $row['preco'] * $row['quantidade'];
+    $total += $row['subtotal'];
+    $carrinho[] = $row;
 }
 ?>
 
@@ -35,36 +39,11 @@ while ($row = $result->fetch_assoc()) {
     <title>Meu Carrinho</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <style>
-        .edite {
-            background-color: #DDA0DD;
-            color: white;
-            padding: 5px 10px;
-        }
-
-        .tabela {
-            color: #BA55D3;
-            border: #BA55D3 solid 3px;
-        }
-
-        h2 {
-            color: #BA55D3;
-            border: 3px solid #DDA0DD;
-            background-color: #DDA0DD;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .excluir {
-            padding: 5px 10px;
-            background-color: red;
-            color: white;
-        }
-
-        .finalizar {
-            background-color: #BA55D3;
-            color: white;
-            padding: 5px 10px;
-        }
+        .edite { background-color: #DDA0DD; color: white; padding: 5px 10px; }
+        .tabela { color: #BA55D3; border: #BA55D3 solid 3px; }
+        h2 { color: #BA55D3; border: 3px solid #DDA0DD; background-color: #DDA0DD; text-align: center; padding: 10px; }
+        .excluir { padding: 5px 10px; background-color: red; color: white; }
+        .finalizar { background-color: #BA55D3; color: white; padding: 5px 10px; }
     </style>
 </head>
 
@@ -72,7 +51,7 @@ while ($row = $result->fetch_assoc()) {
     <h2>Meu Carrinho</h2>
     <hr>
 
-    <?php if ($result->num_rows > 0): ?>
+    <?php if (count($carrinho) > 0): ?>
         <table class="table table-bordered table-striped">
             <thead class="tabela">
                 <tr>
@@ -85,23 +64,19 @@ while ($row = $result->fetch_assoc()) {
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $result->data_seek(0); // volta ao início
-                while ($row = $result->fetch_assoc()):
-                    $subtotal = $row['preco'] * $row['quantidade'];
-                ?>
+                <?php foreach ($carrinho as $item): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['nome']) ?></td>
-                        <td><img src="<?= $row['imagem'] ?>" width="80"></td>
-                        <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
-                        <td><?= $row['quantidade'] ?></td>
-                        <td>R$ <?= number_format($subtotal, 2, ',', '.') ?></td>
+                        <td><?= htmlspecialchars($item['nome']) ?></td>
+                        <td><img src="<?= htmlspecialchars($item['imagem']) ?>" width="80"></td>
+                        <td>R$ <?= number_format($item['preco'], 2, ',', '.') ?></td>
+                        <td><?= $item['quantidade'] ?></td>
+                        <td>R$ <?= number_format($item['subtotal'], 2, ',', '.') ?></td>
                         <td>
-                            <a href="edit_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="edite">Editar</a>
-                            <a href="delete_carrinho.php?id=<?= $row['carrinho_id'] ?>" class="excluir">Excluir</a>
+                            <a href="edit_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="edite">Editar</a>
+                            <a href="delete_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="excluir">Excluir</a>
                         </td>
                     </tr>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
 
@@ -116,5 +91,4 @@ while ($row = $result->fetch_assoc()) {
         <a href="index.php" class="btn btn-primary">Ir às compras</a>
     <?php endif; ?>
 </body>
-
 </html>

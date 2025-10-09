@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "conexao.php";
 
@@ -34,7 +34,7 @@ $result = $conn->query($sql);
         }
 
         h2 {
-            
+
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -84,7 +84,7 @@ $result = $conn->query($sql);
             width: 250px;
             background-color: #fffafa;
             border-radius: 8px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             padding: 10px;
         }
 
@@ -98,14 +98,12 @@ $result = $conn->query($sql);
 
         .top-bar img {
             width: 45px;
-            
+
         }
-        .cabelo{
-            
-            
-           
-            text-align:center; 
-            padding:10px; 
+
+        .cabelo {
+            text-align: center;
+            padding: 10px;
             margin: 0 auto;
         }
     </style>
@@ -123,25 +121,28 @@ $result = $conn->query($sql);
 </div>
 
 <div class="produtos-container">
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="produto">';
-            echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
-            echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
-            echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
-            echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
-            echo '<label>Quantidade:</label><br>';
-            echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
-            echo '<button type="submit">Comprar</button>';
-            echo '</form>';
-            echo '</div>';
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="produto">';
+                echo '<a href="produto_maquiagem.php?id=' . $row['id'] . '">';
+                echo '<img src="' . $row['imagem'] . '" alt="' . $row['nome'] . '" class="imagem-com-borda">';
+                echo '<p><strong>' . $row['nome'] . '</strong><br>R$' . number_format($row['preco'], 2, ',', '.') . '</p>';
+                echo '</a>';
+                echo '<form method="POST" action="adicionar_carrinho.php" class="quantidade">';
+                echo '<input type="hidden" name="produto_id" value="' . $row['id'] . '">';
+                echo '<label>Quantidade:</label><br>';
+                echo '<input type="number" name="quantidade" value="1" min="1" style="width:60px; margin:5px 0;"><br>';
+                echo '<button type="submit">Comprar</button>';
+                echo '</form>';
+
+                echo '</div>';
+            }
+        } else {
+            echo "<p>Nenhum produto disponível no momento.</p>";
         }
-    } else {
-        echo "<p>Nenhum produto disponível no momento.</p>";
-    }
-    ?>
-</div>
+        ?>
+    </div>
 </body>
 
 </html>

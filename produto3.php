@@ -11,7 +11,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto - Acqua di Giò Profondo</title>
+    <title>Produto Nutritive Lotion Thermique Sublimatrice</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -191,39 +191,40 @@ $result = $conn->query($sql);
     <br>
     <div class="produto-container">
         <div class="produto-imagem">
-            <img src="img/kerastase.png">
+            <img src="img/kerastase3.png">
         </div>
-        <div class="produto-info">
-            <div class="avaliacao">
-                <span class="estrelas">★★★★☆</span>
-                <span class="qtd">(6)</span>
-            </div>
-            <h1>Kérastase Chronologiste Masque Intense - Máscara Capilar 200ml</h1>
-            <p class="preco-antigo-produto">R$ 292,70</p>
-            <p class="preco-atual-produto">R$ 104,90</p>
-            <p class="marca">Kerastase</p>
+    </div>
+    <div class="produto-info">
+        <div class="avaliacao">
+            <span class="estrelas">★★★★☆</span>
+            <span class="qtd">(6)</span>
+        </div>
+        <h1>Kérastase Densifique Densité - Máscara Capilar 200 ml</h1>
+        <p class="preco-antigo-produto">R$ 437,90</p>
+        <p class="preco-atual-produto">R$ 305,90</p>
+        <p class="marca">Kerastase</p>
 
-            <div class="variacoes">
-                <button class="ativo">200ml <span>28% off</span></button>
-                <br>
-            </div>
-            <div class="frete">
-                <label>Digite o CEP:</label>
-                <input type="text" name="endereco" required>
-                <br>
-            </div>
-            <div>
-                <label>Não sabe seu CEP?</label>
-                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Clique aqui</a>
-                <br>
-            </div>
-            <p class="info">Informações de frete válidas apenas para este produto. Confira as condições definitivas na sacola.</p>
-            <br>
-            <div>
-                <a href="cabelos.php" class="comprar">Ir a pagina de produtos de cabelo</a>
-            </div>
+        <div class="variacoes">
+            <button class="ativo">200ml <span>28% off</span></button>
             <br>
         </div>
+        <div class="frete">
+            <label>Digite o CEP:</label>
+            <input type="text" name="endereco" required>
+            <br>
+        </div>
+        <div>
+            <label>Não sabe seu CEP?</label>
+            <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">Clique aqui</a>
+            <br>
+        </div>
+        <p class="info">Informações de frete válidas apenas para este produto. Confira as condições definitivas na sacola.</p>
+        <br>
+        <div>
+            <a href="cabelos.php" class="comprar">Ir a pagina de produtos de cabelo</a>
+        </div>
+        <br>
+    </div>
     </div>
     </div>
 </body>

@@ -2,6 +2,7 @@
 session_start();
 require_once "conexao.php";
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -100,6 +101,76 @@ require_once "conexao.php";
         .imagem-container:hover .principal {
             opacity: 0;
         }
+
+        .lista-produtos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card-produto {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-5px);
+        }
+
+        .container-imagem {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .container-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .etiqueta-desconto {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: black;
+            color: white;
+            padding: 5px 8px;
+            border-radius: 50%;
+            font-size: 12px;
+        }
+
+        .titulo-produto {
+            font-size: 14px;
+            margin: 5px 0;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .preco-antigo-produto {
+            text-decoration: line-through;
+            color: gray;
+            font-size: 13px;
+            margin: 2px 0;
+        }
+
+        .preco-atual-produto {
+            font-weight: bold;
+            font-size: 16px;
+            color: black;
+            margin: 2px 0;
+        }
     </style>
 </head>
 
@@ -128,30 +199,108 @@ require_once "conexao.php";
             <img src="img/imagem_inicial2.jpg" class="imagem-destaque hover">
         </div>
         <br>
-        <table class="espaço">
+        <br>
+        <table>
             <tr>
-                <th><img src="img/imagem_inicial4.jpg" width="200px"></th>
-                <th><img src="img/imagem_inicial5.jpg" width="200px"></th>
-                <th><img src="img/imagem_inicial6.jpg" width="200px"></th>
-            </tr>
-            <tr>
-                <th>
-                    <a href="produto1.php">
-                        <img src="img/produto_inicial.jpg" width="250px" alt="Produto">
-                    </a>
-                </th>
-                <th>
-                    <a href="pagina_destino.html">
-                        <img src="img/produto2_inicial.jpg" width="250px" alt="Produto">
-                    </a>
-                </th>
-                <th>
-                    <a href="pagina_destino.html">
-                        <img src="img/produto3_inicial.jpg" width="250px" alt="Produto">
-                    </a>
-                </th>
+                <th><a href="maquiagem.php"><img src="img/imagem_inicial4.jpg" width="200px"></a></th>
+                <th><a href="perfumaria.php"><img src="img/imagem_inicial5.jpg" width="200px"></a></th>
+                <th><a href="skincare.php"><img src="img/imagem_inicial6.jpg" width="200px"></a></th>
             </tr>
         </table>
+        <br>
+        <div class="lista-produtos">
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="produto1.php"><img src="img/kerastase.png" alt="Produto 1"></a>
+                    <span class="etiqueta-desconto">-14%</span>
+                </div>
+                <h3 class="titulo-produto">Kérastase Chronologiste Masque Intense - 200ml</h3>
+                <p class="preco-antigo-produto">R$ 292,70</p>
+                <p class="preco-atual-produto">R$ 104,90</p>
+            </div>
+
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="produto2.php"><img src="img/kerastase2.png" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-22%</span>
+                </div>
+                <h3 class="titulo-produto">Kérastase Nutritive 8h Magic Night - 90ml</h3>
+                <p class="preco-antigo-produto">R$ 531,90</p>
+                <p class="preco-atual-produto">R$ 413,90</p>
+            </div>
+
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="produto3.php"><img src="img/produto3_inicial.jpg" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-30%</span>
+                </div>
+                <h3 class="titulo-produto">Kérastase Densifique Densité - Máscara Capilar 200ml</h3>
+                <p class="preco-antigo-produto">R$ 437,90</p>
+                <p class="preco-atual-produto">R$ 305,90</p>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+        <div>
+            <img src="img/imagem_inicial7.png" width="1050px" height="150px">
+        </div>
+        <br>
+        <h4>Oportunidade única de renovar seu nécessaire</h4>
+        <br>
+        <div class="lista-produtos">
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="maquiagem.php"><img src="img/rimeldior-removebg-preview.png" alt="Produto 1"></a>
+                    <span class="etiqueta-desconto">-50%</span>
+                </div>
+                <h3 class="titulo-produto">Mascara para Cilios Diorshow Iconic Overcurl Waterproof</h3>
+                <p class="preco-antigo-produto">R$ 265,70</p>
+                <p class="preco-atual-produto">R$ 165,70</p>
+            </div>
+
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="perfumaria.php"><img src="img/212.png" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-22%</span>
+                </div>
+                <h3 class="titulo-produto">212 Vip Rosé Eau De Parfum 125ml</h3>
+                <p class="preco-antigo-produto">R$ 650,90</p>
+                <p class="preco-atual-produto">R$ 413,90</p>
+            </div>
+
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="maquiagem.php"><img src="img/po1-removebg-preview (2).png" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-30%</span>
+                </div>
+                <h3 class="titulo-produto">Pó Fenty Beauty Pro Filtr Soft Matte</h3>
+                <p class="preco-antigo-produto">R$ 437,90</p>
+                <p class="preco-atual-produto">R$ 305,90</p>
+            </div>
+
+             <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="cabelos.php"><img src="img/wella1.sem_fundo.jpg" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-10%</span>
+                </div>
+                <h3 class="titulo-produto">Kit Completo Ultimate Repair</h3>
+                <p class="preco-antigo-produto">R$ 710,90</p>
+                <p class="preco-atual-produto">R$ 610,90</p>
+            </div>
+
+             <div class="card-produto">
+                <div class="container-imagem">
+                    <a href="perfumaria.php"><img src="img/invictus-removebg-preview.png" alt="Produto 2"></a>
+                    <span class="etiqueta-desconto">-10%</span>
+                </div>
+                <h3 class="titulo-produto">Perfume Invictus Paco Rabanne Masculino</h3>
+                <p class="preco-antigo-produto">R$ 539,90</p>
+                <p class="preco-atual-produto">R$ 439,90</p>
+            </div>
+
+        </div>
     </center>
 </body>
 
