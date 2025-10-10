@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
 $usuario_id = $_SESSION['user_id'];
 
 $stmt = $conn->prepare("
@@ -39,11 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO pedidos(usuario_id,endereco,telefone,pagamento,total,data) VALUES(?,?,?,?,?,NOW())");
         $stmt->bind_param("isssd", $usuario_id, $endereco, $telefone, $pagamento, $total);
         $stmt->execute();
-
-        // Limpa carrinho
         $stmt = $conn->prepare("DELETE FROM carrinho WHERE usuario_id=?");
         $stmt->bind_param("i", $usuario_id);
         $stmt->execute();
+
+        $_SESSION['total_pedido'] = $total;
 
         $_SESSION['message'] = "Pedido realizado com sucesso!";
         $_SESSION['message_type'] = "success";
@@ -54,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['message_type'] = "danger";
     }
 }
+
 ?>
 
 
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <style>
         .confirmar {
-           background-color: #BA55D3;
+            background-color: #BA55D3;
             color: white;
             padding: 5px 10px;
         }
@@ -96,6 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Não sabe seu CEP?</label>
             <a href="https://buscacepinter.correios.com.br/app/endereco/index.php">Clique aqui</a>
         </div>
+        <div>
+            <label>Digite seu CPF:</label>
+            <input type="text" name="endereco" required>
+        </div>
 
         <div class="form-group">
             <label>Telefone:</label>
@@ -117,8 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-check-label">Cartão de Débito</label>
             </div>
         </div>
-
-        <button type="submit" class="confirmar">Confirmar Pedido</button>
+        <a href="pedido_concluido.php" class="confirmar">Confirmar Pedido</a>
         <a href="carrinho.php" class="btn btn-secondary">Voltar ao Carrinho</a>
     </form>
 </body>

@@ -53,6 +53,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Cadastro</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
+        }
+
+         h2 {
+            color: #BA55D3 ;
+        }
+
+        .entrar {
+            background-color: #DA70D6;
+            color: white;
+            padding: 4px 10px;
+            border: 2px solid #DA70D6;
+        }
+
+        input {
+            width: 350px;
+            height: 45px;
+            box-sizing: border-box;
+        }
+
+        a.cadastre {
+            color: #DA70D6;
+        }
+    </style>
 </head>
 
 <body class="container mt-5">
@@ -69,17 +96,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="post">
         <div class="form-group">
             <label>Email:</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="text" name="email" required>
         </div>
         <div class="form-group">
             <label>Senha:</label>
-            <input type="password" name="senha" class="form-control" required>
+            <input type="password" name="senha" required>
         </div>
-        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="submit" class="entrar">Cadastrar</button>
     </form>
 
     <hr>
-    <p>Já tem uma conta? <a href="login.php">Faça login aqui</a></p>
+    <p>Já tem uma conta? <a href="login.php" class="cadastre">Faça login aqui</a></p>
 </body>
 
 </html>

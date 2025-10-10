@@ -1,16 +1,12 @@
 <?php
 session_start();
 include 'conexao.php';
-
-// Se não estiver logado, redireciona para login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
 $usuario_id = $_SESSION['user_id'];
-
-// Busca apenas os produtos do usuário logado
 $stmt = $conn->prepare("
     SELECT c.id AS carrinho_id, c.quantidade, p.nome, p.preco, p.imagem
     FROM carrinho c
@@ -20,8 +16,6 @@ $stmt = $conn->prepare("
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
 $result = $stmt->get_result();
-
-// Calcula total
 $total = 0;
 $carrinho = [];
 while ($row = $result->fetch_assoc()) {

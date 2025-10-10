@@ -171,6 +171,29 @@ require_once "conexao.php";
             color: black;
             margin: 2px 0;
         }
+
+        .btn-desconto {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-desconto strong {
+            font-weight: 700;
+        }
+
+        .btn-desconto:hover {
+            background-color: #333;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -199,14 +222,9 @@ require_once "conexao.php";
             <img src="img/imagem_inicial2.jpg" class="imagem-destaque hover">
         </div>
         <br>
-        <br>
-        <table>
-            <tr>
-                <th><a href="maquiagem.php"><img src="img/imagem_inicial4.jpg" width="200px"></a></th>
-                <th><a href="perfumaria.php"><img src="img/imagem_inicial5.jpg" width="200px"></a></th>
-                <th><a href="skincare.php"><img src="img/imagem_inicial6.jpg" width="200px"></a></th>
-            </tr>
-        </table>
+        <a href="15%_desconto.php" class="btn-desconto">MÍNIMO <strong>15%</strong>OFF</a> 
+        <a href="50%_desconto.php" class="btn-desconto">MÍNIMO <strong>20%</strong>OFF</a> 
+        <a href="%_desconto.php" class="btn-desconto">MÍNIMO <strong>30%</strong>OFF</a> 
         <br>
         <div class="lista-produtos">
             <div class="card-produto">
@@ -240,15 +258,12 @@ require_once "conexao.php";
             </div>
 
         </div>
-
-        <br>
         <br>
         <div>
             <img src="img/imagem_inicial7.png" width="1050px" height="150px">
         </div>
         <br>
-        <h4>Oportunidade única de renovar seu nécessaire</h4>
-        <br>
+        <h5>Oportunidade única de renovar seu nécessaire</h5>
         <div class="lista-produtos">
             <div class="card-produto">
                 <div class="container-imagem">
@@ -280,7 +295,7 @@ require_once "conexao.php";
                 <p class="preco-atual-produto">R$ 305,90</p>
             </div>
 
-             <div class="card-produto">
+            <div class="card-produto">
                 <div class="container-imagem">
                     <a href="cabelos.php"><img src="img/wella1.sem_fundo.jpg" alt="Produto 2"></a>
                     <span class="etiqueta-desconto">-10%</span>
@@ -290,7 +305,7 @@ require_once "conexao.php";
                 <p class="preco-atual-produto">R$ 610,90</p>
             </div>
 
-             <div class="card-produto">
+            <div class="card-produto">
                 <div class="container-imagem">
                     <a href="perfumaria.php"><img src="img/invictus-removebg-preview.png" alt="Produto 2"></a>
                     <span class="etiqueta-desconto">-10%</span>
