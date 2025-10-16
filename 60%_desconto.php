@@ -122,86 +122,87 @@
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto23.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto9.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">LipHoney - Gloss Labial</h3>
-            <p class="preco-antigo-produto">R$69,90</p>
-            <p class="preco-atual-produto">R$34,95</p>
+            <h3 class="titulo-produto">Taiff Style Pro 2000W 110V - Secador de Cabelo</h3>
+            <p class="preco-antigo-produto">R$534,99</p>
+            <p class="preco-atual-produto">R$264,99</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto24.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desonto10.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Océane Edition Cover Me Up - Pó Solto</h3>
-            <p class="preco-antigo-produto">R$ 69,90</p>
-            <p class="preco-atual-produto">R$ 34,95</p>
+            <h3 class="titulo-produto">GA.MA Italy iQ3 Perfetto Rose Gold 127V - Secador de Cabelo</h3>
+            <p class="preco-antigo-produto">R$ 1.549,00</p>
+            <p class="preco-atual-produto">R$ 1.502,53</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto25.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto11.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Bruna Tavares BT Skinpowder Fair - Pó Solto</h3>
-            <p class="preco-antigo-produto">R$81,70</p>
-            <p class="preco-atual-produto">R$40,85</p>
+            <h3 class="titulo-produto">Curling Gold Titanium 32mm - Modelador de Cachos 280g</h3>
+            <p class="preco-antigo-produto">R$682,54</p>
+            <p class="preco-atual-produto">R$487,53</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto22.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto12.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Océane 4 You Copper Shine - Paleta de Sombras</h3>
-            <p class="preco-antigo-produto">R$80,00</p>
-            <p class="preco-atual-produto">R$40,00</p>
+            <h3 class="titulo-produto">Taiff Curves 1 1/2 - Modelador de Cachos</h3>
+            <p class="preco-antigo-produto">R$558,31</p>
+            <p class="preco-atual-produto">R$279,00</p>
         </div>
     </div>
 
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto20.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto13.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Kit CeraVe Hidrata Rosto & Corpo (2 Produtos)</h3>
-            <p class="preco-antigo-produto">R$156,80</p>
-            <p class="preco-atual-produto">R$156,80</p>
+            <h3 class="titulo-produto">MQ Professional - Escova Secadora de Cabelo</h3>
+            <p class="preco-antigo-produto">R$399,90</p>
+            <p class="preco-atual-produto">R$189,90</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto21.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto14.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Océane 3 To Go Blast - Paleta de Sombras</h3>
-            <p class="preco-antigo-produto">R$79,90</p>
-            <p class="preco-atual-produto">R$39,95</p>
+            <h3 class="titulo-produto">Escova Modeladora Taiff Style Oval</h3>
+            <p class="preco-antigo-produto">R$953,99</p>
+            <p class="preco-atual-produto">R$415,90</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto19.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto15.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Océane 12 Shades - Paleta de Sombras</h3>
-            <p class="preco-antigo-produto">R$138,90</p>
-            <p class="preco-atual-produto">R$82,80</p>
+            <h3 class="titulo-produto">GA.MA Keration Brush 3D Bivolt - Escova Secadora</h3>
+            <p class="preco-antigo-produto">R$383,88</p>
+            <p class="preco-atual-produto">R$191,50</p>
         </div>
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto18.png" alt="Produto 1"></a>
-                <span class="etiqueta-desconto">-50%</span>
+                <a href="produto1.php"><img src="img/desconto16.png" alt="Produto 1"></a>
+                <span class="etiqueta-desconto">-60%</span>
             </div>
-            <h3 class="titulo-produto">Stick Cover C02 - Corretivo em Bastão</h3>
-            <p class="preco-antigo-produto">R$80,00</p>
-            <p class="preco-atual-produto">R$48,00</p>
+            <h3 class="titulo-produto">Prancha MQ Professional Hair Pro Max 480 W T </h3>
+            <p class="preco-antigo-produto">R$659,88</p>
+            <p class="preco-atual-produto">R$329,50</p>
         </div>
     </div>
+
 
 </body>
 

@@ -2,11 +2,9 @@
 session_start();
 include 'conexao.php';
 
-
 $erro = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $email = trim($_POST['email'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
 
@@ -43,10 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -56,30 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #e2cfe2;
             font-family: Arial, sans-serif;
         }
-
         .entrar {
             background-color: #DA70D6;
             color: white;
             padding: 4px 10px;
             border: 2px solid #DA70D6;
         }
-
         input {
             width: 350px;
             height: 45px;
             box-sizing: border-box;
         }
-
         a.cadastre {
             color: #DA70D6;
         }
-
         h2 {
-            color: #BA55D3 ;
+            color: #BA55D3;
         }
     </style>
 </head>
-
 <body class="container mt-5">
     <h2>Login</h2>
     <hr>
@@ -101,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <hr>
-    <p>Não tem uma conta?<a href="cadastro.php" class="cadastre">Cadastre-se aqui</a></p>
+    <p>Não tem uma conta? <a href="cadastro.php" class="cadastre">Cadastre-se aqui</a></p>
 </body>
-
 </html>
