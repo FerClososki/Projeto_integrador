@@ -11,6 +11,10 @@
             font-family: Arial, sans-serif;
         }
 
+        a, a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+        }
+
         h2 {
             color: #BA55D3;
         }
@@ -122,7 +126,7 @@
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto23.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto23.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">LipHoney - Gloss Labial</h3>
@@ -132,7 +136,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto24.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto24.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Océane Edition Cover Me Up - Pó Solto</h3>
@@ -142,7 +146,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto25.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto25.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Bruna Tavares BT Skinpowder Fair - Pó Solto</h3>
@@ -152,7 +156,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto22.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto22.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Océane 4 You Copper Shine - Paleta de Sombras</h3>
@@ -164,7 +168,7 @@
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto20.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto20.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Kit CeraVe Hidrata Rosto & Corpo (2 Produtos)</h3>
@@ -174,7 +178,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto21.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto21.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Océane 3 To Go Blast - Paleta de Sombras</h3>
@@ -184,7 +188,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto19.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto19.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Océane 12 Shades - Paleta de Sombras</h3>
@@ -194,7 +198,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto18.png" alt="Produto 1"></a>
+                <a href="maquiagem.php"><img src="img/desconto18.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-50%</span>
             </div>
             <h3 class="titulo-produto">Stick Cover C02 - Corretivo em Bastão</h3>

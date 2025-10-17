@@ -11,6 +11,10 @@
             font-family: Arial, sans-serif;
         }
 
+        a, a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+        }
+
         h2 {
             color: #BA55D3;
         }
@@ -122,7 +126,7 @@
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto9.png" alt="Produto 1"></a>
+                <a href="cabelo.php"><img src="img/desconto9.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">Taiff Style Pro 2000W 110V - Secador de Cabelo</h3>
@@ -132,7 +136,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desonto10.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desonto10.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">GA.MA Italy iQ3 Perfetto Rose Gold 127V - Secador de Cabelo</h3>
@@ -142,7 +146,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto11.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto11.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">Curling Gold Titanium 32mm - Modelador de Cachos 280g</h3>
@@ -152,7 +156,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto12.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto12.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">Taiff Curves 1 1/2 - Modelador de Cachos</h3>
@@ -164,7 +168,7 @@
     <div class="lista-produtos">
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto13.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto13.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">MQ Professional - Escova Secadora de Cabelo</h3>
@@ -174,7 +178,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto14.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto14.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">Escova Modeladora Taiff Style Oval</h3>
@@ -184,7 +188,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto15.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto15.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">GA.MA Keration Brush 3D Bivolt - Escova Secadora</h3>
@@ -194,7 +198,7 @@
 
         <div class="card-produto">
             <div class="container-imagem">
-                <a href="produto1.php"><img src="img/desconto16.png" alt="Produto 1"></a>
+                <a href="cabelos.php"><img src="img/desconto16.png" alt="Produto 1"></a>
                 <span class="etiqueta-desconto">-60%</span>
             </div>
             <h3 class="titulo-produto">Prancha MQ Professional Hair Pro Max 480 W T </h3>

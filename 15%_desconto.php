@@ -19,6 +19,15 @@ $result = $conn->query($sql);
             font-family: Arial, sans-serif;
         }
 
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
+
+
         h2 {
             color: #BA55D3;
         }
@@ -252,7 +261,7 @@ $result = $conn->query($sql);
     <div class="lista-produtos">
         <div class="card-produto" data-id="0">
             <div class="container-imagem">
-                <img src="img/desconto1.png" alt="Produto 1" />
+                <a href="corpo.php"><img src="img/desconto1.png" alt="Produto 1" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Bio-Oil - Óleo de Tratamento 125ml</h3>
@@ -262,7 +271,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="1">
             <div class="container-imagem">
-                <img src="img/produto2.png" alt="Produto 2" />
+                <a href="corpo.php"><img src="img/produto2.png" alt="Produto 2" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Bioderma Hidratante Diária - Óleo de Banho 1L</h3>
@@ -272,7 +281,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="2">
             <div class="container-imagem">
-                <img src="img/desconto3.png" alt="Produto 3" />
+                <a href="corpo.php"><img src="img/desconto3.png" alt="Produto 3" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">NIVEA Suave - Sabonete Íntimo 250ml</h3>
@@ -282,7 +291,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="3">
             <div class="container-imagem">
-                <img src="img/desconto4.png" alt="Produto 4" />
+                <a href="corpo.php"><img src="img/desconto4.png" alt="Produto 4" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">NIVEA Banho - Esfoliante Corporal 204g</h3>
@@ -294,7 +303,7 @@ $result = $conn->query($sql);
     <div class="lista-produtos">
         <div class="card-produto" data-id="4">
             <div class="container-imagem">
-                <img src="img/desconto5.png" alt="Produto 5" />
+                <a href="cabelos.php"><img src="img/desconto5.png" alt="Produto 5" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Kit Kérastase Elixir Rose Densifique</h3>
@@ -304,7 +313,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="5">
             <div class="container-imagem">
-                <img src="img/desconto6.png" alt="Produto 6" />
+                <a href="cabelos.php"><img src="img/desconto6.png" alt="Produto 6" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Kit TRUSS Uso Obrigatório & Frizz Zero</h3>
@@ -314,7 +323,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="6">
             <div class="container-imagem">
-                <img src="img/desconto7.png" alt="Produto 7" />
+                <a href="maquiagem.php"><img src="img/desconto7.png" alt="Produto 7" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Vult Volume Up! - Máscara de Cílios 10g</h3>
@@ -324,7 +333,7 @@ $result = $conn->query($sql);
 
         <div class="card-produto" data-id="7">
             <div class="container-imagem">
-                <img src="img/desconto8 1.png" alt="Produto 8" />
+                <a href="cabelos.php"><img src="img/desconto8 1.png" alt="Produto 8" /></a>
                 <span class="etiqueta-desconto">-15%</span>
             </div>
             <h3 class="titulo-produto">Tangle Teezer The Original - Escova de Cabelo</h3>

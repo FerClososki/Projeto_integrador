@@ -16,6 +16,10 @@ require_once "conexao.php";
       font-family: Arial, sans-serif;
     }
 
+    a, a:link, a:visited, a:hover, a:active {
+      text-decoration: none;
+    }
+
     h1 {
       color: #BA55D3;
       border: 3px solid #DDA0DD;

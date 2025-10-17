@@ -2,6 +2,7 @@
 session_start();
 include 'conexao.php';
 
+// Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['redirect_after_login'] = 'finalizar_compra.php';
     header("Location: login.php");
@@ -9,6 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 $usuario_id = $_SESSION['user_id'];
 
+// Calcula o total da compra
 $stmt = $conn->prepare("
     SELECT c.quantidade, p.preco
     FROM carrinho c
@@ -24,38 +26,43 @@ while ($row = $result->fetch_assoc()) {
     $total += $row['preco'] * $row['quantidade'];
 }
 
+// Se não houver produtos no carrinho, volta para index
 if ($total == 0) {
     header("Location:index.php");
     exit();
 }
 
+// Processa o POST do formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $endereco = $_POST['endereco'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
     $pagamento = $_POST['pagamento'] ?? '';
 
     if ($endereco && $telefone && $pagamento) {
-        $stmt = $conn->prepare("INSERT INTO pedidos(usuario_id,endereco,telefone,pagamento,total,data) VALUES(?,?,?,?,?,NOW())");
-        $stmt->bind_param("isssd", $usuario_id, $endereco, $telefone, $pagamento, $total);
+
+        $stmt = $conn->prepare(" SELECT c.quantidade, p.preco FROM carrinho c JOIN produtos p ON c.produto_id = p.id WHERE c.usuario_id = ? ");
+        $stmt->bind_param("i", $usuario_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Limpa o carrinho inteiro do usuário
         $stmt = $conn->prepare("DELETE FROM carrinho WHERE usuario_id=?");
         $stmt->bind_param("i", $usuario_id);
         $stmt->execute();
+        $stmt->close();
 
+        // Salva o total na sessão para mostrar na página de confirmação
         $_SESSION['total_pedido'] = $total;
 
-        $_SESSION['message'] = "Pedido realizado com sucesso!";
-        $_SESSION['message_type'] = "success";
-        header("Location:index.php");
+        // Redireciona para a página de pedido concluído
+        header("Location: pedido_concluido.php");
         exit();
     } else {
         $_SESSION['message'] = "Preencha todos os campos!";
         $_SESSION['message_type'] = "danger";
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -69,6 +76,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #BA55D3;
             color: white;
             padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -98,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div>
             <label>Digite seu CPF:</label>
-            <input type="text" name="endereco" required>
+            <input type="text" name="cpf" required>
         </div>
 
         <div class="form-group">
@@ -121,7 +139,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-check-label">Cartão de Débito</label>
             </div>
         </div>
-        <a href="pedido_concluido.php" class="confirmar">Confirmar Pedido</a>
+
+        <!-- Botão de enviar formulário (submete POST) -->
+        <button type="submit" class="confirmar">Confirmar Pedido</button>
         <a href="carrinho.php" class="btn btn-secondary">Voltar ao Carrinho</a>
     </form>
 </body>

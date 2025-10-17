@@ -18,6 +18,14 @@ $result = $conn->query($sql);
             font-family: Arial, sans-serif;
         }
 
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
+
         .imagem-com-borda {
             border: 5px solid #FFFAFA;
             background-color: #FFFAFA;

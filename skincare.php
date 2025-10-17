@@ -54,10 +54,10 @@ $result = $conn->query($sql);
             color: white;
         }
 
-        a {
+        a, a:link, a:visited, a:hover, a:active {
             text-decoration: none;
             color: #FF00FF;
-        }
+        } 
 
         a:hover {
             color: black;

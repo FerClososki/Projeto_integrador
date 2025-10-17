@@ -1,6 +1,7 @@
 <?php
 session_start();
 $total = $_SESSION['total_pedido'] ?? 0;
+
 unset($_SESSION['total_pedido']);
 ?>
 <!DOCTYPE html>
@@ -15,6 +16,14 @@ unset($_SESSION['total_pedido']);
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+        }
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
         }
 
         .container-pedido {
@@ -75,6 +84,11 @@ unset($_SESSION['total_pedido']);
     <div class="container-pedido">
         <h1>Pedido Concluído!</h1>
         <p>Obrigado pela sua compra. Seus produtos estão sendo preparados para envio.</p>
+
+        <div class="valor-total-pedido">
+            <strong>Total do Pedido:</strong> R$ <?= number_format($total, 2, ',', '.') ?>
+        </div>
+
         <div class="rastreio-container">
             <p>Deseja rastrear seu pedido pelos Correios?</p>
             <a href="https://www2.correios.com.br/sistemas/rastreamento/" target="_blank" class="botao-rastreio">Rastrear Pedido</a>

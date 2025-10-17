@@ -36,6 +36,7 @@ if ($carrinho_id) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Carrinho</title>
@@ -44,6 +45,10 @@ if ($carrinho_id) {
         body {
             background-color: #e2cfe2;
             font-family: Arial, sans-serif;
+        }
+
+        a, a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
         }
 
         h2 {
@@ -92,6 +97,7 @@ if ($carrinho_id) {
         }
     </style>
 </head>
+
 <body>
 
     <h2>Editar Quantidade do Produto</h2>
@@ -125,4 +131,5 @@ if ($carrinho_id) {
     <?php endif; ?>
 
 </body>
+
 </html>

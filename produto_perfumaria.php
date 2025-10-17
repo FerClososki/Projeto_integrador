@@ -33,6 +33,10 @@ function valorSeguro($campo, $padrao = '')
             font-family: Arial, sans-serif;
         }
 
+        a, a:link, a:visited, a:hover, a:active{
+            text-decoration: none;
+        }
+
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -60,7 +64,7 @@ function valorSeguro($campo, $padrao = '')
         .produto-imagem img {
             width: 340px;
             transition: transform 0.3s;
-            padding-right: 100px;     
+            padding-right: 100px;
         }
 
         .produto-imagem img:hover {

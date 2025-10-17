@@ -33,11 +33,40 @@ while ($row = $result->fetch_assoc()) {
     <title>Meu Carrinho</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <style>
-        .edite { background-color: #DDA0DD; color: white; padding: 5px 10px; }
-        .tabela { color: #BA55D3; border: #BA55D3 solid 3px; }
-        h2 { color: #BA55D3; border: 3px solid #DDA0DD; background-color: #DDA0DD; text-align: center; padding: 10px; }
-        .excluir { padding: 5px 10px; background-color: red; color: white; }
-        .finalizar { background-color: #BA55D3; color: white; padding: 5px 10px; }
+        .edite {
+            background-color: #DDA0DD;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        a, a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+        }
+
+        .tabela {
+            color: #BA55D3;
+            border: #BA55D3 solid 3px;
+        }
+
+        h2 {
+            color: #BA55D3;
+            border: 3px solid #DDA0DD;
+            background-color: #DDA0DD;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .excluir {
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+        }
+
+        .finalizar {
+            background-color: #BA55D3;
+            color: white;
+            padding: 5px 10px;
+        }
     </style>
 </head>
 
@@ -85,4 +114,5 @@ while ($row = $result->fetch_assoc()) {
         <a href="index.php" class="btn btn-primary">Ir às compras</a>
     <?php endif; ?>
 </body>
+
 </html>

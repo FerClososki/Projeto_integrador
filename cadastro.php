@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($email && $senha) {
         $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email=?");
-        $stmt->bind_param("s", $email); 
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $hash = password_hash($senha, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email=?");
-            $stmt->bind_param("s", $email); 
+            $stmt->bind_param("s", $email);
 
             if ($stmt->execute()) {
                 $user_id = $stmt->insert_id;
@@ -59,8 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-family: Arial, sans-serif;
         }
 
-         h2 {
-            color: #BA55D3 ;
+        a, a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+        }
+
+        h2 {
+            color: #BA55D3;
         }
 
         .entrar {
