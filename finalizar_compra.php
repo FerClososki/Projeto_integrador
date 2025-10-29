@@ -72,6 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Finalizar Compra</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <style>
+        body {
+            background-color: #e2cfe2;
+            font-family: Arial, sans-serif;
+        }
+
         .confirmar {
             background-color: #BA55D3;
             color: white;

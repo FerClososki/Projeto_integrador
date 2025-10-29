@@ -39,8 +39,13 @@ while ($row = $result->fetch_assoc()) {
             padding: 5px 10px;
         }
 
-        a, a:link, a:visited, a:hover, a:active {
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
             text-decoration: none;
+            color: white;
         }
 
         .tabela {
@@ -67,6 +72,92 @@ while ($row = $result->fetch_assoc()) {
             color: white;
             padding: 5px 10px;
         }
+        .comprar{
+            background-color: #fc0000ff;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        /* ======== RESPONSIVIDADE DO CARRINHO ======== */
+        @media (max-width: 992px) {
+            h2 {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            img {
+                width: 60px;
+                height: auto;
+            }
+
+            .edite,
+            .excluir,
+            .finalizar {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+
+            .text-right {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Faz a tabela rolar horizontalmente sem quebrar */
+            .table-responsive {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 10px;
+            }
+
+            table {
+                min-width: 600px;
+                /* mantém as colunas legíveis */
+            }
+
+            .edite,
+            .excluir,
+            .finalizar {
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 18px;
+                padding: 8px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            img {
+                width: 50px;
+            }
+
+            .edite,
+            .excluir,
+            .finalizar {
+                display: block;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .text-right {
+                text-align: center !important;
+            }
+        }
     </style>
 </head>
 
@@ -75,33 +166,36 @@ while ($row = $result->fetch_assoc()) {
     <hr>
 
     <?php if (count($carrinho) > 0): ?>
-        <table class="table table-bordered table-striped">
-            <thead class="tabela">
-                <tr>
-                    <th>Produto</th>
-                    <th>Imagem</th>
-                    <th>Preço Unitário</th>
-                    <th>Quantidade</th>
-                    <th>Subtotal</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($carrinho as $item): ?>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="tabela">
                     <tr>
-                        <td><?= htmlspecialchars($item['nome']) ?></td>
-                        <td><img src="<?= htmlspecialchars($item['imagem']) ?>" width="80"></td>
-                        <td>R$ <?= number_format($item['preco'], 2, ',', '.') ?></td>
-                        <td><?= $item['quantidade'] ?></td>
-                        <td>R$ <?= number_format($item['subtotal'], 2, ',', '.') ?></td>
-                        <td>
-                            <a href="edit_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="edite">Editar</a>
-                            <a href="delete_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="excluir">Excluir</a>
-                        </td>
+                        <th>Produto</th>
+                        <th>Imagem</th>
+                        <th>Preço Unitário</th>
+                        <th>Quantidade</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($carrinho as $item): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($item['nome']) ?></td>
+                            <td><img src="<?= htmlspecialchars($item['imagem']) ?>" width="80"></td>
+                            <td>R$ <?= number_format($item['preco'], 2, ',', '.') ?></td>
+                            <td><?= $item['quantidade'] ?></td>
+                            <td>R$ <?= number_format($item['subtotal'], 2, ',', '.') ?></td>
+                            <td>
+                                <a href="edit_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="edite">Editar</a>
+                                <a href="delete_carrinho.php?id=<?= $item['carrinho_id'] ?>" class="excluir">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
 
         <h4 class="text-right">Total: <strong>R$ <?= number_format($total, 2, ',', '.') ?></strong></h4>
         <div class="text-right mt-3">
@@ -110,8 +204,9 @@ while ($row = $result->fetch_assoc()) {
         </div>
 
     <?php else: ?>
-        <div class="alert alert-info">Seu carrinho está vazio.</div>
-        <a href="index.php" class="btn btn-primary">Ir às compras</a>
+        <div class="comprar">Seu carrinho está vazio.</div>
+        <br>
+        <a href="index.php" class="comprar">Ir às compras</a>
     <?php endif; ?>
 </body>
 

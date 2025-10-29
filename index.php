@@ -10,13 +10,20 @@ require_once "conexao.php";
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Beleza Web</title>
   <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="icon" type="image/png" href="favicon.ico/logo_2x.png">
+
   <style>
     body {
       background-color: #e2cfe2;
       font-family: Arial, sans-serif;
     }
 
-    a, a:link, a:visited, a:hover, a:active {
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
       text-decoration: none;
     }
 
@@ -289,12 +296,12 @@ require_once "conexao.php";
 
     #modalPrecoAtual {
       font-weight: bold;
-      color: #BA55D3;
+      color: #ec76ecff;
       font-size: 18px;
     }
 
     .btn-comprar {
-      background: linear-gradient(135deg, #BA55D3, #9932CC);
+      background: linear-gradient(135deg, #ec76ecff, #ec76ecff);
       color: #fff;
       border: none;
       border-radius: 50px;
@@ -307,7 +314,7 @@ require_once "conexao.php";
     }
 
     .btn-comprar:hover {
-      background: linear-gradient(135deg, #9932CC, #8A2BE2);
+      background: linear-gradient(135deg, #ec76ecff, #ec76ecff);
       transform: scale(1.05);
     }
 
@@ -319,6 +326,260 @@ require_once "conexao.php";
       border-radius: 5px;
       border: 1px solid #ccc;
       text-align: center;
+    }
+
+    /* ======== RESPONSIVIDADE GERAL ======== */
+    @media (max-width: 1200px) {
+      .imagem-container {
+        width: 90%;
+        height: auto;
+      }
+
+      .imagem-container img {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .lista-produtos {
+        gap: 15px;
+        padding: 10px;
+      }
+
+      .card-produto {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 22px;
+        padding: 8px;
+      }
+
+      header table {
+        width: 100%;
+      }
+
+      header th {
+        display: inline-block;
+        margin: 5px;
+      }
+
+      .imagem-container {
+        width: 100%;
+        height: auto;
+      }
+
+      .imagem-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .btn-desconto {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+
+      .card-produto {
+        width: 80%;
+      }
+
+      .container-imagem {
+        width: 100%;
+        height: auto;
+      }
+
+      .container-imagem img {
+        width: 100%;
+        height: auto;
+      }
+
+      .modal-content {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-desconto {
+        display: block;
+        width: 90%;
+        margin: 8px auto;
+      }
+
+      .card-produto {
+        width: 95%;
+      }
+
+      .titulo-produto {
+        font-size: 13px;
+      }
+
+      .preco-atual-produto {
+        font-size: 15px;
+      }
+
+      h5 {
+        font-size: 14px;
+        padding: 0 10px;
+      }
+
+      img[width="1050px"],
+      img[width="1200px"] {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .imagem-container {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    /*footer*/
+
+    .footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      background-color: #efefef;
+      color: #333;
+      border-top: 1px solid #ddd;
+      margin-top: 50px;
+    }
+
+    .footer-section {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .app-buttons img {
+      width: 140px;
+      margin: 5px;
+      transition: transform 0.2s ease;
+    }
+
+    .app-buttons img:hover {
+      transform: scale(1.05);
+    }
+
+    .logos {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    .logos img:hover {
+      opacity: 1;
+      filter: none;
+    }
+
+    .premio img {
+      width: 180px;
+      opacity: 0.9;
+    }
+
+    /* footer 2 */
+    .footer {
+      background-color: #f8f6fc;
+      color: #3a226b;
+      font-family: Arial, sans-serif;
+      padding: 40px 60px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 30px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-column h3 {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer-column a {
+      color: #5a2ea6;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-column a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .payment,
+    .security,
+    .social {
+      flex: 1;
+      min-width: 250px;
+      margin: 15px 0;
+    }
+
+    .payment-icons img {
+      height: 25px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      background-color: #f0ecf8;
+      color: #5a2ea6;
+      padding: 10px;
+      border-radius: 10px;
+      margin-right: 8px;
+      font-size: 18px;
+      transition: 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      background-color: #5a2ea6;
+      color: white;
     }
   </style>
 </head>
@@ -389,7 +650,7 @@ require_once "conexao.php";
       <img src="img/imagem_inicial7.png" width="1050px" height="150px" />
     </div>
     <br />
-    <h5>Oportunidade única de renovar seu nécessaire</h5>
+    <h5>Oportunidade única de renovar sua nécessaire</h5>
     <div class="lista-produtos">
       <div class="card-produto" data-id="4" data-descricao="Máscara para cílios Diorshow Iconic Overcurl à prova d'água.">
         <div class="container-imagem">
@@ -684,6 +945,158 @@ require_once "conexao.php";
       window.location.href = paginaCategoria;
     });
   </script>
+  <footer class="footer">
+    <div class="footer-section apps">
+      <h3>Baixe nossos aplicativos</h3>
+      <div class="app-buttons">
+        <a href="https://play.google.com/store/apps/details?id=br.com.belezanaweb.android&hl=pt" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+        </a>
+        <a href="https://apps.apple.com/br/app/beleza-na-web-cosm%C3%A9ticos/id1137374669" target="_blank">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-section midia">
+      <h3>Na mídia</h3>
+      <div class="logos">
+        <img src="https://via.placeholder.com/80x20?text=EXAME" alt="Exame">
+        <img src="https://via.placeholder.com/80x20?text=Veja" alt="Veja">
+        <img src="https://via.placeholder.com/80x20?text=Estadão" alt="Estadão">
+        <img src="https://via.placeholder.com/80x20?text=ELLE" alt="Elle">
+        <img src="https://via.placeholder.com/80x20?text=Glamour" alt="Glamour">
+      </div>
+    </div>
+
+    <div class="footer-section premio">
+      <h3>Prêmio</h3>
+      <img src="https://via.placeholder.com/180x60?text=Prêmio+eCommerceBrasil" alt="Prêmio eCommerceBrasil">
+    </div>
+  </footer>
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <h3>Ajuda & Suporte</h3>
+        <ul>
+          <li><a href="#">Relacionamento com o Cliente</a></li>
+          <li><a href="#">Política de Devolução</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Consumidor.gov.br</a></li>
+          <li><a href="#">Código de Defesa do Consumidor</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Mapa do Site</a></li>
+          <li><a href="#">Outlet</a></li>
+          <li><a href="#">Nossas Lojas</a></li>
+          <li><a href="#">Quem Somos</a></li>
+          <li><a href="#">Promoções e Cupons</a></li>
+          <li><a href="#">Venda em nosso Marketplace</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Departamentos</h3>
+        <ul>
+          <li><a href="cabelos.php">Produtos para Cabelo</a></li>
+          <li><a href="perfumaria.php">Perfumes</a></li>
+          <li><a href="maquiagem.php">Maquiagem</a></li>
+          <li><a href="skincare.php">Skincare</a></li>
+          <li><a href="corpo.php">Corpo e Banho</a></li>
+          <li><a href="cabelos.php">Cronograma Capilar</a></li>
+          <li><a href="skincare.php">Dermocosméticos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Destaques</h3>
+        <ul>
+          <li><a href="#">Beauty Friday 2025</a></li>
+          <li><a href="#">Presentes</a></li>
+          <li><a href="#">Alto Luxo</a></li>
+          <li><a href="#">Perfumes Árabes</a></li>
+          <li><a href="#">Produtos Exclusivos</a></li>
+          <li><a href="#">K-Beauty e J-Beauty</a></li>
+          <li><a href="#">Cupom de Desconto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Em Alta</h3>
+        <ul>
+          <li><a href="#">Shampoo Antiqueda</a></li>
+          <li><a href="#">Shampoo para Cabelos Brancos</a></li>
+          <li><a href="#">Shampoo a Seco</a></li>
+          <li><a href="#">Leave-in</a></li>
+          <li><a href="#">Protetor Térmico</a></li>
+          <li><a href="#">Perfume de Cabelo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Minha Conta</h3>
+        <ul>
+          <li><a href="#">Dados Pessoais</a></li>
+          <li><a href="#">Meus Endereços</a></li>
+          <li><a href="#">Alterar Senha</a></li>
+          <li><a href="#">Meus Pedidos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Loucas por Beleza</h3>
+        <ul>
+          <li><a href="#">Últimas</a></li>
+          <li><a href="#">Resenhas</a></li>
+          <li><a href="#">Alto Luxo</a></li>
+          <li><a href="#">Siga nosso canal no WhatsApp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Marcas</h3>
+        <ul>
+          <li><a href="#">Beleza na Web Pro</a></li>
+          <li><a href="https://www.boticario.com.br/">O Boticário</a></li>
+          <li><a href="https://trussprofessional.com/">Truss</a></li>
+          <li><a href="https://www.eudora.com.br/">Eudora</a></li>
+          <li><a href="https://www.quemdisseberenice.com.br/">Quem Disse, Berenice?</a></li>
+          <li><a href="https://www.vult.com.br/?srsltid=AfmBOoo91nomcetkdi-tRNnpOf-CTw-1M3UngAzuM2IlVNqI4DFKx1zW">Vult</a></li>
+          <li><a href="#">O.U.i</a></li>
+          <li><a href="#">Dr Jones</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="payment">
+        <h4>Pagamento</h4>
+        <div class="payment-icons">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg" alt="Amex">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Elo_card_logo.svg" alt="Elo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Pix_logo.svg" alt="Pix">
+        </div>
+        <p>Até 10x sem juros no cartão. Confira as regras</p>
+      </div>
+
+      <div class="security">
+        <h4>Segurança</h4>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/GeoTrust_logo.svg" alt="GeoTrust">
+      </div>
+
+      <div class="social">
+        <h4>Siga a empresa nas redes</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/belezanaweb/?locale=pt_BR" target="_blank"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/belezanaweb/?hl=pt" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/@BelezanaWeb" target="_blank"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.tiktok.com/@belezanaweb" target="_blank"><i class="bi bi-tiktok"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=551134897076&text&type=phone_number&app_absent=0" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 

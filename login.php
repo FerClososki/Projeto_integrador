@@ -52,9 +52,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body {
             background-color: #e2cfe2;
             font-family: Arial, sans-serif;
+            text-align: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
         }
 
-        a, a:link, a:visited, a:hover, a:active {
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
             text-decoration: none;
         }
 
@@ -63,20 +71,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: white;
             padding: 4px 10px;
             border: 2px solid #DA70D6;
+            border-radius: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
         }
 
         input {
-            width: 350px;
-            height: 45px;
+            width: 250px;
+            height: 25px;
             box-sizing: border-box;
+            border-radius: 10px;
         }
 
         a.cadastre {
             color: #DA70D6;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 15px;
+            font-weight: bold;
         }
 
         h2 {
             color: #BA55D3;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 50px;
+        }
+
+        label {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+        }
+        p{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 15px;
         }
     </style>
 </head>
