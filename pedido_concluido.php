@@ -2,7 +2,37 @@
 session_start();
 $total = $_SESSION['total_pedido'] ?? 0;
 
+// Remove o total da sessão após exibir
 unset($_SESSION['total_pedido']);
+
+// Gera um código de rastreamento falso (simulado no padrão dos Correios)
+function gerarCodigoRastreamento()
+{
+    $letrasInicio = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 2);
+    $numeros = str_pad(rand(0, 99999999), 8, '0', STR_PAD_LEFT);
+    $letrasFim = substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 2);
+    return $letrasInicio . $numeros . $letrasFim;
+}
+
+// Função para adicionar dias úteis (ignorando sábados e domingos)
+function adicionarDiasUteis($data, $dias)
+{
+    $dataFinal = clone $data;
+    while ($dias > 0) {
+        $dataFinal->modify('+1 day');
+        if ($dataFinal->format('N') < 6) { // 1=Segunda ... 7=Domingo
+            $dias--;
+        }
+    }
+    return $dataFinal;
+}
+
+// Data do pedido e previsão de entrega
+$dataPedido = new DateTime();
+$dataMinEntrega = adicionarDiasUteis($dataPedido, 5);
+$dataMaxEntrega = adicionarDiasUteis($dataPedido, 10);
+
+$codigoRastreamento = gerarCodigoRastreamento();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,7 +43,7 @@ unset($_SESSION['total_pedido']);
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: white;
             margin: 0;
             padding: 0;
         }
@@ -43,6 +73,28 @@ unset($_SESSION['total_pedido']);
         .valor-total-pedido {
             font-size: 16px;
             margin-top: 15px;
+        }
+
+        .codigo-rastreamento {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .info-entrega {
+            margin-top: 15px;
+            font-size: 15px;
+            color: #444;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
         }
 
         .rastreio-container {
@@ -87,6 +139,17 @@ unset($_SESSION['total_pedido']);
 
         <div class="valor-total-pedido">
             <strong>Total do Pedido:</strong> R$ <?= number_format($total, 2, ',', '.') ?>
+        </div>
+        <br>
+        <!-- CÓDIGO DE RASTREAMENTO -->
+        <div class="codigo-rastreamento">
+            Código de Rastreamento: <strong><?= $codigoRastreamento ?></strong>
+        </div>
+        <br>
+        <!-- DATA DO PEDIDO E PREVISÃO DE ENTREGA -->
+        <div class="info-entrega">
+            <p><strong>Data do Pedido:</strong> <?= $dataPedido->format('d/m/Y') ?></p>
+            <p><strong>Previsão de Entrega:</strong> <?= $dataMinEntrega->format('d/m/Y') ?> a <?= $dataMaxEntrega->format('d/m/Y') ?></p>
         </div>
 
         <div class="rastreio-container">

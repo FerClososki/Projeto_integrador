@@ -10,7 +10,9 @@ require_once "conexao.php";
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Beleza Web</title>
   <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  
   <link rel="icon" type="image/png" href="favicon.ico/logo_2x.png">
 
   <style>
@@ -581,11 +583,50 @@ require_once "conexao.php";
       background-color: #5a2ea6;
       color: white;
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* Faixa preta superior */
+    .top-bar {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      padding: 6px 0;
+    }
+
+    /* Faixa roxa com promoção */
+    .promo-bar {
+      background-color: #cf87f0ff;
+      color: #fff;
+      text-align: center;
+      padding: 8px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .promo-bar .promo-button {
+      background-color: #55357cff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
-  <br /><br />
+  <br>
   <h1>Beleza Web</h1>
   <center>
     <header>
@@ -988,7 +1029,7 @@ require_once "conexao.php";
           <li><a href="#">Mapa do Site</a></li>
           <li><a href="#">Outlet</a></li>
           <li><a href="#">Nossas Lojas</a></li>
-          <li><a href="#">Quem Somos</a></li>
+          <li><a href="quemsomos.php">Quem Somos</a></li>
           <li><a href="#">Promoções e Cupons</a></li>
           <li><a href="#">Venda em nosso Marketplace</a></li>
         </ul>
@@ -1016,7 +1057,7 @@ require_once "conexao.php";
           <li><a href="#">Perfumes Árabes</a></li>
           <li><a href="#">Produtos Exclusivos</a></li>
           <li><a href="#">K-Beauty e J-Beauty</a></li>
-          <li><a href="#">Cupom de Desconto</a></li>
+          <li><a href="50%_desconto.php">Desconto</a></li>
         </ul>
       </div>
 

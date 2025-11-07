@@ -63,6 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         }
 
+        .seta {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
         a,
         a:link,
         a:visited,
@@ -105,12 +113,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 20px;
         }
-        p{
+
+        p {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 15px;
         }
     </style>
 </head>
+<a href="index.php">
+    <img src="img/seta-removebg-preview.png" alt="Voltar" class="seta">
+</a>
+<br>
 
 <body class="container mt-5">
     <h2>Cadastro</h2>
