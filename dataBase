@@ -1,0 +1,38 @@
+-- Tabela: produtos
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    preco DECIMAL(10,2),
+    imagem VARCHAR(255),
+    categoria VARCHAR(50),
+    descricao VARCHAR(255)
+);
+
+-- Tabela: carrinho
+CREATE TABLE carrinho (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    produto_id INT,
+    quantidade INT,
+    ativo TINYINT(1),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id)
+);
+
+-- Tabela: pedidos
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    endereco VARCHAR(255),
+    telefone VARCHAR(20),
+    pagamento ENUM('pix', 'credito', 'debito'),
+    total DECIMAL(10,2),
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--Tabela: usuarios
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
