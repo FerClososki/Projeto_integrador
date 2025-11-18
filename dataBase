@@ -1,38 +1,133 @@
 -- Tabela: produtos
-CREATE TABLE produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255),
-    preco DECIMAL(10,2),
-    imagem VARCHAR(255),
-    categoria VARCHAR(50),
-    descricao VARCHAR(255)
+CREATE TABLE `produtos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `imagem` varchar(255) DEFAULT NULL,
+  `categoria` varchar(50) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 
+INSERT INTO produtos (nome, descricao, preco, imagem, categoria)
+VALUES
+('LipHoney - Gloss Labial', 'Gloss', 34.95, 'img/desconto23.png', 'maquiagem'),
+('Océane Edition Cover Me Up - Pó Solto', 'Pó Solto', 34.95, 'img/desconto24.png', 'maquiagem'),
+('Bruna Tavares BT Skinpowder Fair - Pó Solto', 'Pó Solto', 40.85, 'img/desconto25.png', 'maquiagem'),
+('Océane 4 You Copper Shine - Paleta de Sombras', 'Paleta de sombras', 40.00, 'img/desconto22.png', 'maquiagem'),
+('Kit CeraVe Hidrata Rosto & Corpo (2 Produtos)', 'Hidratante', 156.80, 'img/desconto20.png', 'corpo'),
+('Océane 3 To Go Blast - Paleta de Sombras', 'Paleta', 39.95, 'img/desconto21.png', 'maquiagem'),
+('Océane 12 Shades - Paleta de Sombras', 'Paleta', 82.80, 'img/desconto19.png', 'maquiagem'),
+('Stick Cover C02 - Corretivo em Bastão', 'Corretivo', 48.00, 'img/desconto18.png', 'maquiagem'),
+('Kit Kérastase Elixir Rose Densifique', 'kit kerastase', 698.80, 'img/desconto5.png', 'cabelos'),
+('Kit TRUSS Uso Obrigatório & Frizz Zero', 'kit truss', 245.80, 'img/desconto6.png', 'cabelos'),
+('Vult Volume Up! - Máscara de Cílios 10g', 'Rimel', 29.00, 'img/desconto7.png', 'maquiagem'),
+('Tangle Teezer The Original - Escova de Cabelo', 'Secador', 264.99, 'img/desconto9.png', 'cabelos'),
+('Taiff Style Pro 2000W 110V - Secador de Cabelo', 'kit kerastase', 698.80, 'img/desconto5.png', 'cabelos'),
+('GA.MA Italy iQ3 Perfetto Rose Gold 127V - Secador de Cabelo', 'Secador', 1502.53, 'img/desonto10.png', 'cabelos'),
+('Curling Gold Titanium 32mm - Modelador de Cachos 280g', 'Modelador cachos', 487.53, 'img/desconto11.png', 'cabelos'),
+('Taiff Curves 1 1/2 - Modelador de Cachos', 'Modelador cachos', 279.00, 'img/desconto12.png', 'cabelos'),
+('MQ Professional - Escova Secadora de Cabelo', 'Escova secadora', 189.90, 'img/desconto13.png', 'cabelos'),
+('Escova Modeladora Taiff Style Oval', 'Escova secadora', 415.90, 'img/desconto14.png', 'cabelos'),
+('GA.MA Keration Brush 3D Bivolt - Escova Secadora', 'Escova secadora', 191.50, 'img/desconto15.png', 'cabelos'),
+('Prancha MQ Professional Hair Pro Max 480 W T', 'Prancha', 329.50, 'img/desconto16.png', 'cabelos'),
+('Kit Completo Ultimate Repair Com Miracle Hair Rescue 1l', 'Shampoo + Máscara + oleo + condicionador', 710.50, 'img/wella1.sem_fundo.jpg', 'cabelos'),
+('Kit Wella Invigo Color Brilliance Shampoo 1L + Máscara 500g', 'Shampoo 1L + máscara 500g', 503.22, 'img/wella2.jpg', 'cabelos'),
+('Kit Shampoo, Condicionador e Máscara Reflections -Wella ÚNICO', 'Shampoo + Condicionador + Máscara', 250.00, 'img/wella3.jpg', 'cabelos'),
+('Kit Wella Professionals Fusion Salon Trio (3 Produtos)', '3 produtos', 751.20, 'img/wella4.sem_fundo.jpg', 'cabelos'),
+('Wella Professionals Oil Reflections Óleo Capilar 100ml', 'Oleo capilar', 150.50, 'img/oleowella1-removebg-preview.png', 'cabelos'),
+('Wella Professionals Ultimate Luxe Oil Óleo', 'Oleo 2 capilar', 100.00, 'img/oleowella2-removebg-preview.png', 'cabelos'),
+('Kit Divine Trio', 'Máscara + Shampoo + condicionador', 203.34, 'img/brae1-removebg-preview.png', 'cabelos'),
+('Kit Brae Para Nutrição', 'Máscara + Shampoo + condicionador', 133.50, 'img/brae2-removebg-preview.png', 'cabelos'),
+('Kit Braé Stages Hidration', 'Máscara + Shampoo + condicionador', 137.34, 'img/brae3-removebg-preview.png', 'cabelos'),
+('Kit Braé Blond Repair', 'Máscara + Shampoo + condicionador', 200.50, 'img/brae4-removebg-preview.png', 'cabelos'),
+('Óleo Capilar Divine 60ml', 'Oleo capilar Brae', 71.40, 'img/oleo1brae-removebg-preview.png', 'cabelos'),
+('Óleo Capilar Revival 60ml', 'Oleo capilar revival', 75.20, 'img/braeoleo2-removebg-preview.png', 'cabelos'),
+('Perfume lancôme idôle feminino <br> eau de toilette 25ml', 'Perfume feminino', 341.00, 'img/lancome__1_-removebg-preview.png', 'perfumaria'),
+('Yves saint Laurent 30 ml', 'Perfume feminino', 431.00, 'img/saint laurent (1).png', 'perfumaria'),
+('Dior Miss Eau De Parfum 50ml', 'Perfume feminino', 750.00, 'img/missdior3 (1) (1).png', 'perfumaria'),
+('La Vie Est Belle Feminino Eau De Parfum 30ml', 'Perfume feminino', 500.00, 'img/lavie-removebg-preview.png', 'perfumaria'),
+('212 Vip Rosé Eau De Parfum 125ml', 'Perfume feminino', 650.00, 'img/212.png', 'perfumaria'),
+('Dior Sauvage Eau De Parfum Masculino 60 Ml', 'Perfume masculino', 839.90, 'img/seuvage2-removebg-preview.png', 'perfumaria'),
+('Perfume Invictus Paco Rabanne Masculino', 'Perfume masculino', 539.91, 'img/invictus-removebg-preview.png', 'perfumaria'),
+('Perfume 212 Vip Black Masculino 200ml', 'Perfume masculino', 939.90, 'img/212masc-removebg-preview.png', 'perfumaria'),
+('1 Million Eau De Toilette Paco Rabanne Masculino 100ml', 'Perfume masculino', 550.00, 'img/1million-removebg-preview.png', 'perfumaria'),
+('Asad Lattafa Perfume Masculino', 'Perfume masculino', 499.00, 'img/asad-removebg-preview.png', 'perfumaria'),
+('Bio-Oil - Óleo de Tratamento 125ml', 'Oleo de Tratamento', 65.00, 'img/produto1.png', 'corpo'),
+('Bioderma Hidratante Diária - Óleo de Banho 1L', 'Hidratante', 228.00, 'img/desconto2.png', 'corpo'),
+('NIVEA Suave - Sabonete Íntimo 250ml', 'Sabonete Intimo', 19.00, 'img/desconto3.png', 'corpo'),
+('NIVEA Banho - Esfoliante Corporal 204g', 'Esfoliante corporal', 22.90, 'img/desconto4.png', 'corpo'),
+('Bioderma Sensibio Gel Moussant - Gel de Limpeza Micelar Calmante e Hidratante 200ml', 'Gel de Limpeza', 90.90, 'bioderma1.png', 'corpo'),
+('Bioderma Sébium Gel Moussant Actif - Gel de Limpeza Purificante Intensiva 200ml', 'Gel de Limpeza', 79.90, 'bioderma2.png', 'corpo'),
+('Hidratante Corporal Nivea Beleza Radiante Pele Uniforme - 200ml', 'Hidratante', 30.61, 'nivea1-removebg-preview.png', 'corpo'),
+('NIVEA Beleza Radiante 7 em 1 - Creme Hidratante Facial 100g', 'Creme Hidratante', 33.90, 'nivea2.png', 'corpo'),
+('L’Occitane au Brésil Compotas Corporais Romã - Esfoliante Corporal 200ml', 'Esfoliante', 69.90, 'loccitane1.png', 'corpo'),
+('L’Occitane au Brésil Romã - Geleia Hidratante Desodorante Corporal 200ml', 'Hidratante', 99.90, 'loccitane2-removebg-preview.png', 'corpo'),
+('L’Occitane en Provence Amêndoa - Óleo de Banho 250ml', 'Oleo', 238.00, 'loccitane3.png', 'corpo'),
+('L’Occitane en Provence Amêndoa - Loção Firmadora Corporal 240ml', 'Loçao', 318.00, 'loccitane4.png', 'corpo'),
+('Kit Bioderma Pigmentbio - Sabonete LÍquido e Serum Facial Clareador C-Concentrate 15ml', 'Serum', 408.78, 'bioderma3-removebg-preview.png', 'corpo'),
+('Base Líquida Fenty Eaze Drop Blurring', 'Base Liquida', 239.50, 'img/base1-removebg-preview 2.png', 'maquiagem'),
+('Base Nars Light Reflecting', 'Base Liquida', 330.90, 'img/base2-removebg-preview 2.png', 'maquiagem'),
+('Base YSL Touche Éclat Le Teint', 'Base Liquida', 439.00, 'img/base3-removebg-preview (1) 1.png', 'maquiagem'),
+('Corretivo Sérum Hidratante Fenty Beauty', 'Corretivo Fenty Beauty', 209.00, 'img/corretivo1-removebg-preview 2.png', 'maquiagem'),
+('Corretivo Nars Radiant Creamy Concealer', 'Corretivo Nars', 259.15, 'img/corretivo2-removebg-preview 2.png', 'maquiagem'),
+('Corretivo YSL Touche Éclat High Cover', 'Corretivo YSL', 299.50, 'img/corretivo3-removebg-preview 2.png', 'maquiagem'),
+('Pó Fenty Beauty Pro Filtr Soft Matte', 'Po Fenty Beauty', 599.00, 'img/po1-removebg-preview (2).png', 'maquiagem'),
+('Pó Multifuncional Nars Soft Matte', 'Po Nars', 299.50, 'img/po2-removebg-preview (1) 1.png', 'maquiagem'),
+('Pó Compacto YSL All Hours Hyper Finish', 'Po YSL', 489.15, 'img/po3-removebg-preview (1) 1.png', 'maquiagem'),
+('Lip Balm Dior Addict Lip Glow', 'Lip Balm', 275.00, 'img/diorbatom-removebg-preview.png', 'maquiagem'),
+('Batom Dior Addict', 'Batom Dior', 309.50, 'img/diorbatom3-removebg-preview.png', 'maquiagem'),
+('Batom Dior Rouge Dior Velvet', 'Batom Dior', 319.00, 'img/diorbatom2-removebg-preview.png', 'maquiagem'),
+('Mascara para Cilios Diorshow Iconic Overcurl Waterproof', 'Mascara de Cilios Dior', 269.00, 'img/rimeldior-removebg-preview-removebg-preview.png', 'maquiagem'),
+('Lancôme Hypnôse Volume à Porter Máscara de Cilios', 'Máscara de Cilios Lancôme', 210.50, 'img/lancomerimel_2-removebg-preview.png', 'maquiagem'),
+('Lancôme Lash Idôle Waterproof Mascara de Cilios', 'Máscara de Cilios Lancôme', 204.63, 'img/rimellancome-removebg-preview-removebg-preview.png', 'maquiagem'),
+('Creme Ácido Glicólico Creamy', 'Creme', 84.90, 'img/creamyazul-removebg-preview.png', 'SkynCare'),
+('Creamy Sérum Facial 30ml Vitamina C', 'Serum', 105.00, 'img/creamylaranja-removebg-preview.png', 'SkynCare'),
+('Ácido Mandélico Gel Creamy 30g', 'Acido', 84.20, 'img/creamyrosa-removebg-preview.png', 'SkynCare'),
+('Retinol: com ativos hidratantes calmantes e antioxidantes', 'Retinol', 105.20, 'img/creamyroxo-removebg-preview.png', 'SkynCare'),
+('Creme Hidratante Facial Creamy', 'Creme', 50.26, 'img/bodycream-removebg-preview.png', 'SkynCare'),
+('Creamy Gel De Limpeza 200ml', 'Gel De Limpeza', 63.15, 'img/gel-removebg-preview.png', 'SkynCare'),
+('Loção Hidratante Corporal', 'Hidratante', 63.15, 'img/hidratante-removebg-preview.png', 'SkynCare'),
+('Lip Balm Incolor', 'Lip Balm', 40.00, 'img/lip-removebg-preview.png', 'SkynCare'),
+('Alfaparf Semi Di Lino Sublime Water - Perfume para Cabelo 50ml', 'Perfume de cabelo', 147.90, 'img/perfume_cabelo.php', 'cabelo'),
+('Hugo Boss Bottled Parfum - Perfume Masculino (200ml)', 'perfume', 535.78, 'img/boss1.png', 'perfumaria'),
+('Hugo Boss Bottled Tonic - Perfume Masculino (100ml)', 'perfume', 321.23, 'img/boss2.png', 'perfumaria'),
+('Bottled Triumph Elixir Hugo Boss Perfume Masculino 50ml', 'perfume', 521.01 , 'img/boss3.png', 'perfumaria'),
+('The Scent Magnetic Hugo Boss Perfume Masculino 50ml', 'perfume', 412.20, 'img/boss4.png', 'perfumaria');
+
+
 -- Tabela: carrinho
-CREATE TABLE carrinho (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    produto_id INT,
-    quantidade INT,
-    ativo TINYINT(1),
-    FOREIGN KEY (produto_id) REFERENCES produtos(id)
+CREATE TABLE `carrinho` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` int DEFAULT '0',
+  `produto_id` int NOT NULL,
+  `quantidade` int NOT NULL DEFAULT '1',
+  `ativo` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `produto_id` (`produto_id`),
+  CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`)
 );
 
 -- Tabela: pedidos
-CREATE TABLE pedidos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    endereco VARCHAR(255),
-    telefone VARCHAR(20),
-    pagamento ENUM('pix', 'credito', 'debito'),
-    total DECIMAL(10,2),
-    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `pedidos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` int NOT NULL,
+  `endereco` varchar(255) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `pagamento` enum('pix','credito','debito') NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `data` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `usuario_id` (`usuario_id`),
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 );
 
 --Tabela: usuarios
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(150) NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(150) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `criado_em` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 );
